@@ -10,7 +10,8 @@ public class RelacaoPesoPreco {
         }
 
         if ("torta".equals(item)) {
-            precoTotal = 96.00 * (qtd / 16);
+            precoTotal = 96.00 * ((double) qtd / 16);
+//            divisão de inteiros bug arrumado.
         }
 
         if ("leite".equals(item)) {
