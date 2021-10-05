@@ -5,9 +5,9 @@ public class Registradora {
     public static void main(String[] args) {
 //        primeiroBug();
 
-        segundoBug();
+//        segundoBug();
 
-//        terceiroBug();
+        terceiroBug();
 //
 //        quartoBug();
 //
