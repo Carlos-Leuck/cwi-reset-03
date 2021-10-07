@@ -10,7 +10,7 @@ public class Registradora {
 //        terceiroBug();
 //        quartoBug();
 //        quintoBug();
-        sextoBug();
+//        sextoBug();
     }
 
     private static double registrarItem(String item, int quantidade) {
@@ -107,24 +107,27 @@ public class Registradora {
         // Cliente 1
         String item = "sanduiche";
         int quantidade = 20;
-        if (checarEstoque(item, quantidade)) {
-            ItensPorQuantidade.removerSanduiche(quantidade);
 
+        checarEstoque(item, quantidade);
 
-            double precoTotal = registrarItem(item, quantidade);
+        double precoTotal = registrarItem(item, quantidade);
+        ItensPorQuantidade.removerSanduiche(quantidade);
 
+        if (ItensPorQuantidade.sanduiche >= 0)
             System.out.println(String.format("Valor total: %.2f", precoTotal));
-        }
+
+        System.out.println();
         // Cliente 2
         String item2 = "sanduiche";
         int quantidade2 = 5;
-        if (checarEstoque(item2, quantidade2)) {
-            ItensPorQuantidade.removerSanduiche(quantidade2);
+        checarEstoque(item2, quantidade2);
+        ItensPorQuantidade.removerSanduiche(quantidade2);
 
-            double precoTotal2 = registrarItem(item2, quantidade2);
+        double precoTotal2 = registrarItem(item2, quantidade2);
+
+        if (ItensPorQuantidade.sanduiche >= 0)
 
             System.out.println(String.format("Valor total: %.2f", precoTotal2));
-        }
     }
 
 }
