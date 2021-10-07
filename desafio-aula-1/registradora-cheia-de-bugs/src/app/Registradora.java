@@ -4,13 +4,12 @@ public class Registradora {
 
     public static void main(String[] args) {
 //        primeiroBug();
-
-//     segundoBug();
-
+//        segundoBug();
 //        terceiroBug();
 //        quartoBug();
 //        quintoBug();
 //        sextoBug();
+
     }
 
     private static double registrarItem(String item, int quantidade) {
@@ -50,7 +49,7 @@ public class Registradora {
 
         double precoTotal = registrarItem(item, quantidade);
 
-        System.out.println(String.format("Valor total: %.2f", precoTotal));
+        apresentarContaParaCliente(ItensPorQuantidade.sanduiche, precoTotal);
     }
 
     private static void segundoBug() {
@@ -60,7 +59,8 @@ public class Registradora {
 
         double precoTotal = registrarItem(item, quantidade);
 
-        System.out.println(String.format("Valor total: %.2f", precoTotal));
+        apresentarContaParaCliente(ItensPorQuantidade.torta, precoTotal);
+
     }
 
     private static void terceiroBug() {
@@ -70,7 +70,7 @@ public class Registradora {
 
         double precoTotal = registrarItem(item, quantidade);
 
-        System.out.println(String.format("Valor total: %.2f", precoTotal));
+        apresentarContaParaCliente(ItensPorQuantidade.cafe, precoTotal);
     }
 
     private static void quartoBug() {
@@ -81,7 +81,7 @@ public class Registradora {
 
         double precoTotal = registrarItem(item, quantidade);
 
-        System.out.println(String.format("Valor total: %.2f", precoTotal));
+        apresentarContaParaCliente(ItensPorQuantidade.sanduiche, precoTotal);
 
         // Cliente 2
         String item2 = "sanduiche";
@@ -89,7 +89,7 @@ public class Registradora {
 
         double precoTotal2 = registrarItem(item2, quantidade2);
 
-        System.out.println(String.format("Valor total: %.2f", precoTotal2));
+        apresentarContaParaCliente(ItensPorQuantidade.sanduiche, precoTotal2);
     }
 
     private static void quintoBug() {
@@ -99,7 +99,7 @@ public class Registradora {
 
         double precoTotal = registrarItem(item, quantidade);
 
-        System.out.println(String.format("Valor total: %.2f", precoTotal));
+        apresentarContaParaCliente(ItensPorQuantidade.pao, precoTotal);
     }
 
     private static void sextoBug() {
@@ -109,25 +109,27 @@ public class Registradora {
         int quantidade = 20;
 
         checarEstoque(item, quantidade);
-
         double precoTotal = registrarItem(item, quantidade);
         ItensPorQuantidade.removerSanduiche(quantidade);
 
-        if (ItensPorQuantidade.sanduiche >= 0)
-            System.out.println(String.format("Valor total: %.2f", precoTotal));
+        apresentarContaParaCliente(ItensPorQuantidade.sanduiche, precoTotal);
 
-        System.out.println();
         // Cliente 2
         String item2 = "sanduiche";
         int quantidade2 = 5;
+
         checarEstoque(item2, quantidade2);
         ItensPorQuantidade.removerSanduiche(quantidade2);
-
         double precoTotal2 = registrarItem(item2, quantidade2);
 
-        if (ItensPorQuantidade.sanduiche >= 0)
+        apresentarContaParaCliente(ItensPorQuantidade.sanduiche, precoTotal2);
+    }
 
-            System.out.println(String.format("Valor total: %.2f", precoTotal2));
+    private static void apresentarContaParaCliente(int quantidadeProduto, double precoTotal) {
+        if (quantidadeProduto >= 0) {
+            System.out.println(String.format("Valor total: %.2f", precoTotal));
+            System.out.println();
+        }
     }
 
 }
