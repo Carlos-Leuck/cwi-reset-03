@@ -1,23 +1,27 @@
 package br.com.cwi.reset.aula.dois.exercicios;
 
-public class Diretor {
+public class Ator {
     private String nome;
     private Integer idade;
-    private Integer quantidadeFilmesDirigidos;
+    private Integer numeroOscarsVencidos;
     private Genero genero;
 
-
-    public Diretor(String nome, Integer idade, Integer quantidadeFilmesDirigidos) {
+    public Ator(String nome, Integer idade, Integer numeroOscarsVencidos, Genero genero) {
         this.nome = nome;
         this.idade = idade;
-        this.quantidadeFilmesDirigidos = quantidadeFilmesDirigidos;
+        this.numeroOscarsVencidos = numeroOscarsVencidos;
+        this.genero = genero;
     }
 
-    public Diretor(String nome, Integer idade, Integer quantidadeFilmesDirigidos, Genero genero) {
-        this.nome = nome;
-        this.idade = idade;
-        this.quantidadeFilmesDirigidos = quantidadeFilmesDirigidos;
-        this.genero = genero;
+
+    @Override
+    public String toString() {
+        return "Ator{" +
+                "nome='" + nome + '\'' +
+                ", idade=" + idade +
+                ", numeroOscarsVencidos=" + numeroOscarsVencidos +
+                ", genero=" + genero +
+                '}';
     }
 
     public String getNome() {
@@ -39,6 +43,5 @@ public class Diretor {
                 ", genero=" + getGenero() +
                 '}');
     }
-
 
 }

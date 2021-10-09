@@ -1,7 +1,9 @@
 package br.com.cwi.reset.aula.dois;
 
+import br.com.cwi.reset.aula.dois.exercicios.Ator;
 import br.com.cwi.reset.aula.dois.exercicios.Diretor;
 import br.com.cwi.reset.aula.dois.exercicios.Filme;
+import br.com.cwi.reset.aula.dois.exercicios.Genero;
 
 public class Aplicacao {
     public static void main(String[] args) {
@@ -12,6 +14,12 @@ public class Aplicacao {
 
         filme1.reproduzir();
         filme2.reproduzir();
+
+        Ator ator = new Ator("Brad pit", 45, 5, Genero.MASCULINO);
+        Diretor diretor3 = new Diretor("Greta Gerwig", 35, 5, Genero.FEMININO);
+
+        ator.imprimirInformacoesPessoais();
+        diretor3.imprimirInformacoesPessoais();
     }
 
 }
