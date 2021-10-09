@@ -8,14 +8,7 @@ public class Filme {
     private Double notaDeAvaliacao;
     private Diretor diretor;
 
-    public Filme(String nome, String descricao, Integer duracaoEmMinutos, Integer anoDeLancamento, Double notaDeAvaliacao, Diretor diretor) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.duracaoEmMinutos = duracaoEmMinutos;
-        this.anoDeLancamento = anoDeLancamento;
-        this.notaDeAvaliacao = notaDeAvaliacao;
-        this.diretor = diretor;
-    }
+
 
     public void reproduzir() {
         System.out.println("Filme{" +
