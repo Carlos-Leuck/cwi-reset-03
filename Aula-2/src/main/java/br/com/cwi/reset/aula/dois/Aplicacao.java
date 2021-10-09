@@ -7,8 +7,8 @@ public class Aplicacao {
         Filme filme1 = new Filme("Piratas do Caribe", "filme de ação muito top", 90, 2003, 4, diretor1);
         Filme filme2 = new Filme("Monstros S.A", "animação muito legal", 120, 2009, 5, diretor2);
 
-        System.out.println(filme1.reproduzir());
-        System.out.println(filme2.reproduzir());
+        filme1.reproduzir();
+        filme2.reproduzir();
     }
 
 }

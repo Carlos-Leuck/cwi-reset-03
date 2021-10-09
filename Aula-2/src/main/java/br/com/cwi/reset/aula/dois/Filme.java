@@ -17,13 +17,13 @@ public class Filme {
         this.diretor = diretor;
     }
 
-    public String reproduzir() {
-        return "Filme{" +
+    public void reproduzir() {
+        System.out.println("Filme{" +
                 "nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", duracaoEmMinutos=" + duracaoEmMinutos +
                 ", diretor=" + diretor.getNome() +
-                '}';
+                '}');
     }
 
 
