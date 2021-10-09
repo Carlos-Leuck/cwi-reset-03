@@ -8,6 +8,10 @@ public enum Genero {
 
     private String descricao;
 
+    public String getDescricao() {
+        return descricao;
+    }
+
     Genero(String descricao) {
         this.descricao = descricao;
     }

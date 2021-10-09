@@ -14,16 +14,6 @@ public class Ator {
     }
 
 
-    @Override
-    public String toString() {
-        return "Ator{" +
-                "nome='" + nome + '\'' +
-                ", idade=" + idade +
-                ", numeroOscarsVencidos=" + numeroOscarsVencidos +
-                ", genero=" + genero +
-                '}';
-    }
-
     public String getNome() {
         return nome;
     }
@@ -40,7 +30,7 @@ public class Ator {
         System.out.println("Ator{" +
                 "nome='" + getNome() + '\'' +
                 ", idade=" + getIdade() +
-                ", genero=" + getGenero() +
+                ", genero=" + getGenero().getDescricao() +
                 '}');
     }
 

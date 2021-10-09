@@ -36,7 +36,7 @@ public class Diretor {
         System.out.println("Ator{" +
                 "nome='" + getNome() + '\'' +
                 ", idade=" + getIdade() +
-                ", genero=" + getGenero() +
+                ", genero=" + getGenero().getDescricao() +
                 '}');
     }
 
