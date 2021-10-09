@@ -15,7 +15,7 @@ public class Pessoa {
         System.out.println("Pessoa{" +
                 "nome='" + nome + '\'' +
                 ", idade=" + idade +
-                ", genero=" + genero +
+                ", genero=" + genero.getDescricao() +
                 '}');
     }
 
