@@ -4,6 +4,8 @@ import br.com.cwi.reset.aula.dois.exercicios.Ator;
 import br.com.cwi.reset.aula.dois.exercicios.Diretor;
 import br.com.cwi.reset.aula.dois.exercicios.Genero;
 
+import java.time.LocalDate;
+
 public class Aplicacao {
     public static void main(String[] args) {
 
@@ -12,6 +14,7 @@ public class Aplicacao {
 
         ator.imprimirInformacoesPessoais();
         diretor1.imprimirInformacoesPessoais();
+        ator.calcularIdade(LocalDate.of(1961, 5, 17), LocalDate.of(1961, 5, 17));
     }
 
 }

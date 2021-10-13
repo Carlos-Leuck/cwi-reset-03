@@ -1,25 +1,39 @@
 package br.com.cwi.reset.aula.dois.exercicios;
 
-public class Pessoa {
+import java.time.LocalDate;
+import java.time.Period;
+
+public abstract class Pessoa {
     private String nome;
     private Integer idade;
+    private LocalDate dataNascimento;
     private Genero genero;
 
-    public Pessoa(String nome, Integer idade, Genero genero) {
+    public Pessoa(String nome, LocalDate dataNascimento, Genero genero) {
         this.nome = nome;
-        this.idade = idade;
+        this.dataNascimento = dataNascimento;
         this.genero = genero;
     }
 
     public void imprimirInformacoesPessoais() {
         System.out.println("Pessoa{" +
                 "nome='" + nome + '\'' +
-                ", idade=" + idade +
+                ", dataNascimento=" + dataNascimento +
                 ", genero=" + genero.getDescricao() +
                 '}');
     }
 
     public String getNome() {
         return nome;
+    }
+// LocalDate.of(year, month, day)
+
+
+    public int calcularIdade(LocalDate birthDate, LocalDate currentDate) {
+        if ((birthDate != null) && (currentDate != null)) {
+            return Period.between(birthDate, currentDate).getYears();
+        } else {
+            return 0;
+        }
     }
 }
