@@ -1,4 +1,6 @@
-package br.com.cwi.reset.carlosleuckmoreira;
+package br.com.cwi.reset.carlosleuckmoreira.entities;
+
+import br.com.cwi.reset.carlosleuckmoreira.TipoAtuacao;
 
 public class PersonagemAtor {
     private Integer id;
