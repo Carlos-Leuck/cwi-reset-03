@@ -21,13 +21,23 @@ public class Aplicacao {
         Integer anoInicioAtividade = 1986;
         AtorRequest atorRequest = new AtorRequest(nome, dataNascimento, statusCarreira, anoInicioAtividade);
 
+        String nome2 = "Brad Pit";
+        LocalDate dataNascimento2 = LocalDate.of(1968, Month.SEPTEMBER, 25);
+        StatusCarreira statusCarreira2 = StatusCarreira.EM_ATIVIDADE;
+        Integer anoInicioAtividade2 = 1986;
+        AtorRequest atorRequest2 = new AtorRequest(nome2, dataNascimento2, statusCarreira2, anoInicioAtividade2);
+
         atorService.criarAtor(atorRequest);
-//       atorService.consultarAtor(0);
+        atorService.criarAtor(atorRequest2);
+
+//       atorService.consultarAtor(2);
+
 
         List<Ator> atores = fakeDatabase.recuperaAtores();
 
 
         System.out.println("Deve conter 1 ator, quantidade encontrada: " + atores.size());
+        System.out.println("Id:" + atores.get(0).getId());
         System.out.println("Primeiro ator deve ser 'Will Smith', valor encontrado: " + atores.get(0).getNome());
     }
 }

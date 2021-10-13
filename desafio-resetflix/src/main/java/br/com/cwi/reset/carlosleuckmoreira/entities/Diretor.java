@@ -17,7 +17,12 @@ public class Diretor {
         this.anoInicioAtividade = anoInicioAtividade;
     }
 
+    //  GERAR ID AUTOMATICAMENTE
+    static int contador = 0;
+
     public Diretor(DiretorRequest diretorRequest) {
+        contador++;
+        id = contador;
         this.nome = diretorRequest.getNome();
         this.dataNascimento = diretorRequest.getDataNascimento();
         this.anoInicioAtividade = diretorRequest.getAnoInicioAtividade();
