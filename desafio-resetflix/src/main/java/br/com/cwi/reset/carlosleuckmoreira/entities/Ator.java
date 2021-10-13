@@ -1,4 +1,7 @@
-package br.com.cwi.reset.carlosleuckmoreira;
+package br.com.cwi.reset.carlosleuckmoreira.entities;
+
+import br.com.cwi.reset.carlosleuckmoreira.StatusCarreira;
+import br.com.cwi.reset.carlosleuckmoreira.dto.AtorRequest;
 
 import java.time.LocalDate;
 
@@ -15,6 +18,14 @@ public class Ator {
         this.dataNascimento = dataNascimento;
         this.statusCarreira = statusCarreira;
         this.anoInicioAtividade = anoInicioAtividade;
+    }
+
+    public Ator(AtorRequest atorRequest) {
+        this.nome = atorRequest.getNome();
+        this.dataNascimento = atorRequest.getDataNascimento();
+        this.statusCarreira = atorRequest.getStatusCarreira();
+        this.anoInicioAtividade = atorRequest.getAnoInicioAtividade();
+
     }
 
     public Integer getId() {

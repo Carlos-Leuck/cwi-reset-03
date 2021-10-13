@@ -1,4 +1,6 @@
-package br.com.cwi.reset.carlosleuckmoreira;
+package br.com.cwi.reset.carlosleuckmoreira.entities;
+
+import br.com.cwi.reset.carlosleuckmoreira.dto.DiretorRequest;
 
 import java.time.LocalDate;
 
@@ -13,6 +15,13 @@ public class Diretor {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.anoInicioAtividade = anoInicioAtividade;
+    }
+
+    public Diretor(DiretorRequest diretorRequest) {
+        this.nome = diretorRequest.getNome();
+        this.dataNascimento = diretorRequest.getDataNascimento();
+        this.anoInicioAtividade = diretorRequest.getAnoInicioAtividade();
+
     }
 
     public Integer getId() {

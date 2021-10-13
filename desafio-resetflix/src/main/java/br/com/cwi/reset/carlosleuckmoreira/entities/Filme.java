@@ -1,4 +1,7 @@
-package br.com.cwi.reset.carlosleuckmoreira;
+package br.com.cwi.reset.carlosleuckmoreira.entities;
+
+import br.com.cwi.reset.carlosleuckmoreira.Genero;
+import br.com.cwi.reset.carlosleuckmoreira.PersonagemAtor;
 
 import java.time.LocalDate;
 import java.util.List;

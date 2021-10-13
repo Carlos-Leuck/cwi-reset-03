@@ -1,4 +1,7 @@
-package br.com.cwi.reset.carlosleuckmoreira;
+package br.com.cwi.reset.carlosleuckmoreira.repositories;
+
+import br.com.cwi.reset.carlosleuckmoreira.entities.Ator;
+import br.com.cwi.reset.carlosleuckmoreira.entities.Diretor;
 
 import java.util.ArrayList;
 import java.util.List;
