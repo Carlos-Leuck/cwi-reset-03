@@ -1,5 +1,10 @@
 package br.com.cwi.reset.carlosleuckmoreira;
 
+import br.com.cwi.reset.carlosleuckmoreira.dto.AtorRequest;
+import br.com.cwi.reset.carlosleuckmoreira.entities.Ator;
+import br.com.cwi.reset.carlosleuckmoreira.repositories.FakeDatabase;
+import br.com.cwi.reset.carlosleuckmoreira.services.AtorService;
+
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
@@ -14,9 +19,9 @@ public class Aplicacao {
         LocalDate dataNascimento = LocalDate.of(1968, Month.SEPTEMBER, 25);
         StatusCarreira statusCarreira = StatusCarreira.EM_ATIVIDADE;
         Integer anoInicioAtividade = 1986;
-//        AtorRequest atorRequest = new AtorRequest(nome, dataNascimento, statusCarreira, anoInicioAtividade);
+        AtorRequest atorRequest = new AtorRequest(nome, dataNascimento, statusCarreira, anoInicioAtividade);
 
-        //atorService.criarAtor(atorRequest);
+        atorService.criarAtor(atorRequest);
 
         List<Ator> atores = fakeDatabase.recuperaAtores();
 
