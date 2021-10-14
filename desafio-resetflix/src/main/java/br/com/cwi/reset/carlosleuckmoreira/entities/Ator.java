@@ -12,19 +12,20 @@ public class Ator {
     private StatusCarreira statusCarreira;
     private Integer anoInicioAtividade;
 
-    public Ator(String nome, LocalDate dataNascimento, StatusCarreira statusCarreira, Integer anoInicioAtividade) {
+    public Ator(Integer id, String nome, LocalDate dataNascimento, StatusCarreira statusCarreira, Integer anoInicioAtividade) {
+        this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.statusCarreira = statusCarreira;
         this.anoInicioAtividade = anoInicioAtividade;
     }
 
-//  GERAR ID AUTOMATICAMENTE
-    static int contador=0;
+    //  GERAR ID AUTOMATICAMENTE
+    static int contador = 0;
 
     public Ator(AtorRequest atorRequest) {
         contador++;
-        id=contador;
+        id = contador;
         this.nome = atorRequest.getNome();
         this.dataNascimento = atorRequest.getDataNascimento();
         this.statusCarreira = atorRequest.getStatusCarreira();
@@ -52,5 +53,14 @@ public class Ator {
         return anoInicioAtividade;
     }
 
-
+    @Override
+    public String toString() {
+        return "Ator{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", statusCarreira=" + statusCarreira +
+                ", anoInicioAtividade=" + anoInicioAtividade +
+                '}';
+    }
 }

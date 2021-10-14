@@ -10,7 +10,7 @@ public class Diretor {
     private LocalDate dataNascimento;
     private Integer anoInicioAtividade;
 
-    public Diretor(Integer id, String nome, LocalDate dataNascimento, Integer anoInicioAtividade) {
+    public Diretor(Integer id,String nome, LocalDate dataNascimento, Integer anoInicioAtividade) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -44,5 +44,16 @@ public class Diretor {
     public Integer getAnoInicioAtividade() {
         return anoInicioAtividade;
     }
+
+    @Override
+    public String toString() {
+        return "Diretor{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", anoInicioAtividade=" + anoInicioAtividade +
+                '}';
+    }
+
 
 }
