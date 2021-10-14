@@ -80,18 +80,16 @@ public class DiretorService {
             if (lista.isEmpty()) {
                 throw new NaoExisteDiretorCadastradoException();
             }
-
-            if (filtroNome == "") {
+//            Não selecionou nenhum filtro
+            if (filtroNome == "" || filtroNome==null) {
                 return lista;
             }
-
             for (int i = 0; i < lista.size(); i++) {
                 if (lista.get(i).getNome().contains(filtroNome)) {
                     listaDeRetorno.add(lista.get(i));
 
                 }
             }
-
             if (listaDeRetorno.isEmpty())
                 throw new NaoExisteDiretorComOFiltroInformadoException(filtroNome);
 

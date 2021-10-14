@@ -76,13 +76,13 @@ public class Aplicacao {
 //       System.out.println(atorService.consultarAtores());
 
 //        TESTE LISTAR ATORES EM ATIVIDADE
-//        System.out.println(atorService.listarAtoresEmAtividade("lala"));
+//        System.out.println(atorService.listarAtoresEmAtividade("W"));
 
 //        TESTAR diretorService
-        diretorService.cadastrarDiretor(diretorRequest);
-        diretorService.cadastrarDiretor(diretorRequest2);
+//        diretorService.cadastrarDiretor(diretorRequest);
+//        diretorService.cadastrarDiretor(diretorRequest2);
 
-        System.out.println(diretorService.listarDiretores("Tim"));
+//        System.out.println(diretorService.listarDiretores(null));
 //        System.out.println(diretorService.listarDiretores("Brad"));
     }
 }

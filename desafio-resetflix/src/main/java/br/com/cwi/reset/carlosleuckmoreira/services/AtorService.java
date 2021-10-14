@@ -22,7 +22,7 @@ public class AtorService {
 
     public void criarAtor(AtorRequest atorRequest) {
 
-        //validação campo obrigatório ator: OK
+        //validação campo obrigatório
         try {
 
             if (atorRequest.getNome() == null) {
@@ -38,9 +38,9 @@ public class AtorService {
                 throw new CampoObrigatorioNaoInformadoException("status da carreira");
             }
 
-            //validação nome e sobrenome: OK
+            //validação nome e sobrenome:
             if (!atorRequest.getNome().contains(" ")) {
-                throw new NomeESobrenomeDevemSerInformadosException("Ator");
+                throw new NomeESobrenomeDevemSerInformadosException("ator");
             }
 
             LocalDate nascimento = atorRequest.getDataNascimento();
@@ -50,19 +50,19 @@ public class AtorService {
             String dataInteiroToLocalDate = newFormat.format(inicioAtividade);
 
 
-//            validação não é possível cadastrar atores não nascidos:OK
+//            validação não é possível cadastrar atores não nascidos
             if (nascimento.compareTo(LocalDate.now()) > 0) {
                 throw new DataDeNascimentoInvalidaException();
             }
 
-            //validação ano de início de atividade não pode ser anterior ao ano de nascimento do ator: OK
+            //validação ano de início de atividade não pode ser anterior ao ano de nascimento
             int compararDatas = dataInteiroToLocalDate.compareTo(String.valueOf(nascimento));
             if (compararDatas <= 0) {
                 throw new AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoAtorException();
             }
 
 
-            //validação já existe um ator cadastrado com esse nome: OK
+            //validação já existe um ator cadastrado com esse nome
             String nomeAtor;
             nomeAtor = atorRequest.getNome();
             for (int i = 0; i < fakeDatabase.recuperaAtores().size(); i++) {
@@ -86,28 +86,42 @@ public class AtorService {
     public List listarAtoresEmAtividade(String filtroNome) {
         List<Ator> lista = new ArrayList();
         lista = fakeDatabase.recuperaAtores();
+        List<Ator> listaDeRetorno = new ArrayList();
+
 
         try {
+//            checar se lista está vazia
             if (lista.isEmpty()) {
                 throw new NaoExisteAtorCadastradoException();
             }
 
+//            Deixar apenas atores em atividade
             for (int i = 0; i < lista.size(); i++) {
                 if (lista.get(i).getStatusCarreira() == StatusCarreira.APOSENTADO) {
                     lista.remove(i);
                 }
             }
 
+//          Não selecionou nenhum filtro.
+            if (filtroNome == "" || filtroNome == null) {
+                return lista.stream().map(AtorEmAtividade::new).collect(Collectors.toList());
+            }
+
+
             for (int i = 0; i < lista.size(); i++) {
-                if (!lista.get(i).getNome().contains(filtroNome) && lista.isEmpty()) {
-                    throw new NaoExisteAtorComOFiltroInformadoException(filtroNome);
+                if (lista.get(i).getNome().contains(filtroNome)) {
+                    listaDeRetorno.add(lista.get(i));
                 }
+            }
+
+            if (listaDeRetorno.isEmpty()) {
+                throw new NaoExisteAtorComOFiltroInformadoException(filtroNome);
             }
 
         } catch (NaoExisteAtorCadastradoException | NaoExisteAtorComOFiltroInformadoException e) {
             e.printStackTrace();
         }
-        return lista.stream().map(AtorEmAtividade::new).collect(Collectors.toList());
+        return listaDeRetorno.stream().map(AtorEmAtividade::new).collect(Collectors.toList());
 
     }
 
@@ -121,7 +135,7 @@ public class AtorService {
             }
 
             for (int i = 0; i < lista.size(); i++) {
-                if ((lista.get(i).getId()) == (id)) {
+                if (lista.get(i).getId().equals(id)) {
                     return lista.get(i);
 
                 }
