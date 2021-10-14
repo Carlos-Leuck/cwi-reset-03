@@ -1,7 +1,5 @@
 package br.com.cwi.reset.carlosleuckmoreira.dto;
 
-import br.com.cwi.reset.carlosleuckmoreira.entities.Diretor;
-
 import java.time.LocalDate;
 
 public class DiretorRequest {

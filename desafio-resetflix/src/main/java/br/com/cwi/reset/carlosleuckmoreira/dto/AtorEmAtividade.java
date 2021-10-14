@@ -33,4 +33,13 @@ public class AtorEmAtividade {
     public LocalDate getDataNascimento() {
         return dataNascimento;
     }
+
+    @Override
+    public String toString() {
+        return "AtorEmAtividade{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                '}';
+    }
 }

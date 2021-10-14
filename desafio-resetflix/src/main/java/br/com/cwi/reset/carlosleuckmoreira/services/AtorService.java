@@ -24,6 +24,7 @@ public class AtorService {
 
         //validação campo obrigatório ator: OK
         try {
+
             if (atorRequest.getNome() == null) {
                 throw new CampoObrigatorioNaoInformadoException("nome");
             }
@@ -37,10 +38,9 @@ public class AtorService {
                 throw new CampoObrigatorioNaoInformadoException("status da carreira");
             }
 
-
             //validação nome e sobrenome: OK
             if (!atorRequest.getNome().contains(" ")) {
-                throw new NomeESobrenomeDevemSerInformadosException();
+                throw new NomeESobrenomeDevemSerInformadosException("Ator");
             }
 
             LocalDate nascimento = atorRequest.getDataNascimento();
@@ -49,10 +49,8 @@ public class AtorService {
             SimpleDateFormat newFormat = new SimpleDateFormat("yyyy");
             String dataInteiroToLocalDate = newFormat.format(inicioAtividade);
 
-            /*
-            validação não é possível cadastrar atores não nascidos:OK
-            Obs: se der positivo a data de nascimento > data atual
-            */
+
+//            validação não é possível cadastrar atores não nascidos:OK
             if (nascimento.compareTo(LocalDate.now()) > 0) {
                 throw new DataDeNascimentoInvalidaException();
             }
@@ -102,7 +100,7 @@ public class AtorService {
 
             for (int i = 0; i < lista.size(); i++) {
                 if (!lista.get(i).getNome().contains(filtroNome) && lista.isEmpty()) {
-                    throw new NaoExisteAtorComOFiltroInformadoException();
+                    throw new NaoExisteAtorComOFiltroInformadoException(filtroNome);
                 }
             }
 
