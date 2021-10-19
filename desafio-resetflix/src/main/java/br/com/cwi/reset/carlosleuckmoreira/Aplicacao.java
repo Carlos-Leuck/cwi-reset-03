@@ -1,12 +1,11 @@
 package br.com.cwi.reset.carlosleuckmoreira;
 
-import br.com.cwi.reset.carlosleuckmoreira.dto.AtorRequest;
-import br.com.cwi.reset.carlosleuckmoreira.dto.DiretorRequest;
-import br.com.cwi.reset.carlosleuckmoreira.entities.Ator;
-import br.com.cwi.reset.carlosleuckmoreira.entities.Diretor;
-import br.com.cwi.reset.carlosleuckmoreira.repositories.FakeDatabase;
-import br.com.cwi.reset.carlosleuckmoreira.services.AtorService;
-import br.com.cwi.reset.carlosleuckmoreira.services.DiretorService;
+import br.com.cwi.reset.carlosleuckmoreira.model.StatusCarreira;
+import br.com.cwi.reset.carlosleuckmoreira.request.AtorRequest;
+import br.com.cwi.reset.carlosleuckmoreira.request.DiretorRequest;
+import br.com.cwi.reset.carlosleuckmoreira.model.Ator;
+import br.com.cwi.reset.carlosleuckmoreira.service.AtorService;
+import br.com.cwi.reset.carlosleuckmoreira.service.DiretorService;
 
 import java.time.LocalDate;
 import java.time.Month;
