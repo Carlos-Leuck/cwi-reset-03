@@ -21,6 +21,8 @@ public class AtorController {
         this.atorService = new AtorService(FakeDatabase.getInstance());
     }
 
+    //TODO checar httpstatus dos métodos e testar atores em atividade
+
     //  CADASTRAR ATOR
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

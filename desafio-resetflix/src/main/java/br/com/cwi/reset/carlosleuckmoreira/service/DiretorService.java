@@ -72,7 +72,7 @@ public class DiretorService {
 
     }
 
-    public List listarDiretores(String filtroNome) {
+    public List<Diretor> listarDiretores(String filtroNome) {
         List<Diretor> lista = new ArrayList();
         List<Diretor> listaDeRetorno = new ArrayList();
         lista = fakeDatabase.recuperaDiretores();

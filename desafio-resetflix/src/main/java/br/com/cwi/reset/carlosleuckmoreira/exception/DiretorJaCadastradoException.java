@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 public class DiretorJaCadastradoException extends Exception {
     public DiretorJaCadastradoException(String nomeDiretor) {
-        super("Já existe um ator cadastrado para o nome: "+ nomeDiretor +".");
+        super("Já existe um diretor cadastrado para o nome: "+ nomeDiretor +".");
     }
 }
