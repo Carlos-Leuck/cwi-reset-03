@@ -1,5 +1,7 @@
 package br.com.cwi.reset.carlosleuckmoreira.model;
 
+import br.com.cwi.reset.carlosleuckmoreira.request.EstudioRequest;
+
 import java.time.LocalDate;
 
 public class Estudio {
@@ -15,6 +17,19 @@ public class Estudio {
         this.descricao = descricao;
         this.dataCriacao = dataCriacao;
         this.statusAtividade = statusAtividade;
+    }
+
+    //  GERAR ID AUTOMATICAMENTE
+    static int contador = 0;
+
+    public Estudio(EstudioRequest estudioRequest) {
+        contador++;
+        id = contador;
+        this.nome = estudioRequest.getNome();
+        this.descricao = estudioRequest.getDescricao();
+        this.dataCriacao = estudioRequest.getDataCriacao();
+        this.statusAtividade = estudioRequest.getStatusAtividade();
+
     }
 
     public Integer getId() {
