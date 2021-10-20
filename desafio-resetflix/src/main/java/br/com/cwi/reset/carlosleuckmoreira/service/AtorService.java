@@ -91,7 +91,7 @@ public class AtorService {
 
     }
 
-    public List listarAtoresEmAtividade(String filtroNome) {
+    public List<AtorEmAtividade> listarAtoresEmAtividade(String filtroNome) {
         List<Ator> lista = new ArrayList();
         lista = fakeDatabase.recuperaAtores();
         List<Ator> listaDeRetorno = new ArrayList();
@@ -157,7 +157,7 @@ public class AtorService {
 
     }
 
-    public List consultarAtores() {
+    public List<Ator> consultarAtores() {
         try {
             if (fakeDatabase.recuperaAtores().isEmpty()) {
                 throw new NaoExisteAtorCadastradoException();
