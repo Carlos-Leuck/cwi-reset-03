@@ -1,12 +1,11 @@
 package br.com.cwi.reset.carlosleuckmoreira.controller;
 
-import br.com.cwi.reset.carlosleuckmoreira.FakeDatabase;
 import br.com.cwi.reset.carlosleuckmoreira.model.Ator;
 import br.com.cwi.reset.carlosleuckmoreira.request.AtorRequest;
 import br.com.cwi.reset.carlosleuckmoreira.response.AtorEmAtividade;
 import br.com.cwi.reset.carlosleuckmoreira.service.AtorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,11 +14,8 @@ import java.util.List;
 @RequestMapping("/atores")
 public class AtorController {
 
+    @Autowired
     private AtorService atorService;
-
-    public AtorController() {
-        this.atorService = new AtorService(FakeDatabase.getInstance());
-    }
 
     //TODO checar httpstatus dos métodos e testar atores em atividade
 

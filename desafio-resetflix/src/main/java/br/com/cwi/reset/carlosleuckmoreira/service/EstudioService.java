@@ -2,37 +2,31 @@ package br.com.cwi.reset.carlosleuckmoreira.service;
 
 import br.com.cwi.reset.carlosleuckmoreira.exception.*;
 import br.com.cwi.reset.carlosleuckmoreira.request.EstudioRequest;
-import br.com.cwi.reset.carlosleuckmoreira.FakeDatabase;
+import br.com.cwi.reset.carlosleuckmoreira.repository.FakeDatabase;
 import br.com.cwi.reset.carlosleuckmoreira.model.Estudio;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class EstudioService {
+    @Autowired
     private FakeDatabase fakeDatabase;
-
-    public EstudioService(FakeDatabase fakeDatabase) {
-        this.fakeDatabase = fakeDatabase;
-    }
 
     public void cadastrarEstudio(EstudioRequest estudioRequest) {
 
         try {
-            verificarCampoObrigatorio(estudioRequest);
+            validarCampoObrigatorio(estudioRequest);
 
 
             if (estudioRequest.getDataCriacao().isAfter(LocalDate.now())) {
                 throw new DataCriacaoEstudioNaoPodeSerMaiorQueDataAtualException();
             }
 
-            String nomeEstudio;
-            nomeEstudio = estudioRequest.getNome();
-            for (int i = 0; i < fakeDatabase.recuperaEstudios().size(); i++) {
-                if (fakeDatabase.recuperaEstudios().get(i).getNome().equals(nomeEstudio)) {
-                    throw new EstudioJaCadastradoException(nomeEstudio);
-                }
-            }
+            validarEstudioJaCadastradComNomeMesmoNome(estudioRequest);
 
             Estudio estudio = new Estudio(estudioRequest);
             fakeDatabase.persisteEstudio(estudio);
@@ -42,11 +36,19 @@ public class EstudioService {
                 EstudioJaCadastradoException e) {
             e.printStackTrace();
         }
-
-
     }
 
-    private void verificarCampoObrigatorio(EstudioRequest estudioRequest) throws CampoObrigatorioNaoInformadoException {
+    private void validarEstudioJaCadastradComNomeMesmoNome(EstudioRequest estudioRequest) throws EstudioJaCadastradoException {
+        String nomeEstudio;
+        nomeEstudio = estudioRequest.getNome();
+        for (int i = 0; i < fakeDatabase.recuperaEstudios().size(); i++) {
+            if (fakeDatabase.recuperaEstudios().get(i).getNome().equals(nomeEstudio)) {
+                throw new EstudioJaCadastradoException(nomeEstudio);
+            }
+        }
+    }
+
+    private void validarCampoObrigatorio(EstudioRequest estudioRequest) throws CampoObrigatorioNaoInformadoException {
         if (estudioRequest.getNome() == null) {
             throw new CampoObrigatorioNaoInformadoException("nome");
         }
@@ -61,7 +63,7 @@ public class EstudioService {
         }
     }
 
-    public List<Estudio> listarEstudioes(String filtroNome) {
+    public List<Estudio> listarEstudios(String filtroNome) {
         List<Estudio> lista;
         List<Estudio> listaDeRetorno = new ArrayList();
         lista = fakeDatabase.recuperaEstudios();

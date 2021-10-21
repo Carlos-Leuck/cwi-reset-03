@@ -1,9 +1,9 @@
 package br.com.cwi.reset.carlosleuckmoreira.controller;
 
-import br.com.cwi.reset.carlosleuckmoreira.FakeDatabase;
 import br.com.cwi.reset.carlosleuckmoreira.model.Estudio;
 import br.com.cwi.reset.carlosleuckmoreira.request.EstudioRequest;
 import br.com.cwi.reset.carlosleuckmoreira.service.EstudioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,11 +13,8 @@ import java.util.List;
 @RequestMapping("/estudios")
 public class EstudioController {
 
+    @Autowired
     private EstudioService estudioService;
-
-    public EstudioController() {
-        this.estudioService = new EstudioService(FakeDatabase.getInstance());
-    }
 
     //    CADASTRAR ESTUDIO
     @PostMapping
@@ -32,7 +29,7 @@ public class EstudioController {
 
     @GetMapping
     public List<Estudio> consultarEstudios(@RequestParam(value = "nome", required = false) String filtroNome) {
-        return this.estudioService.listarEstudioes(filtroNome);
+        return this.estudioService.listarEstudios(filtroNome);
     }
 
 

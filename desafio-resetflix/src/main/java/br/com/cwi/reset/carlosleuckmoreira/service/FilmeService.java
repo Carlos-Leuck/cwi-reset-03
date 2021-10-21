@@ -1,18 +1,16 @@
 package br.com.cwi.reset.carlosleuckmoreira.service;
 
 import br.com.cwi.reset.carlosleuckmoreira.exception.*;
-import br.com.cwi.reset.carlosleuckmoreira.model.Genero;
 import br.com.cwi.reset.carlosleuckmoreira.request.FilmeRequest;
-import br.com.cwi.reset.carlosleuckmoreira.FakeDatabase;
+import br.com.cwi.reset.carlosleuckmoreira.repository.FakeDatabase;
 import br.com.cwi.reset.carlosleuckmoreira.model.Filme;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
+@Service
 public class FilmeService {
 
+    @Autowired
     private FakeDatabase fakeDatabase;
     @Autowired
     private EstudioService estudioService;
@@ -21,29 +19,16 @@ public class FilmeService {
     @Autowired
     private AtorService atorService;
 
-    public FilmeService(FakeDatabase fakeDatabase) {
-        this.fakeDatabase = fakeDatabase;
-    }
-
     public void cadastrarFilme(FilmeRequest filmeRequest) {
 
 
-//
-
-        //  1.Campos com * são obrigatórios: nome, anoLancamento, capaFilme,idDiretor,idEstudio, resumo, personagens: OK
-
         try {
-            verificarCampoObrigatorio(filmeRequest);
+            validarCampoObrigatorio(filmeRequest);
 
-
-            //  2.Caso não exista nenhum estúdio cadastrado para o id informado deve retornar erro
             estudioService.consultarEstudio(filmeRequest.getIdEstudio());
 
-            //  3.Caso não exista nenhum diretor cadastrado para o id informado deve retornar erro:
             diretorService.consultarDiretor(filmeRequest.getIdDiretor());
 
-            //  4.Caso não exista nenhum ator (entrar na lista de personagens e pegar o id)
-            //  cadastrado para o id informado deve retornar erro
             for (int i = 0; i < fakeDatabase.recuperaAtores().size(); i++) {
                 atorService.consultarAtor(filmeRequest.getPersonagens().get(i).getIdAtor());
             }
@@ -71,7 +56,7 @@ public class FilmeService {
 
     }
 
-    private void verificarCampoObrigatorio(FilmeRequest filmeRequest) throws CampoObrigatorioNaoInformadoException {
+    private void validarCampoObrigatorio(FilmeRequest filmeRequest) throws CampoObrigatorioNaoInformadoException {
         if (filmeRequest.getNome() == null) {
             throw new CampoObrigatorioNaoInformadoException("nome");
         }

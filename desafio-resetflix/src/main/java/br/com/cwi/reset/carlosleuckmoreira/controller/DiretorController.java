@@ -1,9 +1,9 @@
 package br.com.cwi.reset.carlosleuckmoreira.controller;
 
-import br.com.cwi.reset.carlosleuckmoreira.FakeDatabase;
 import br.com.cwi.reset.carlosleuckmoreira.model.Diretor;
 import br.com.cwi.reset.carlosleuckmoreira.request.DiretorRequest;
 import br.com.cwi.reset.carlosleuckmoreira.service.DiretorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,11 +13,8 @@ import java.util.List;
 @RequestMapping("/diretores")
 public class DiretorController {
 
+    @Autowired
     private DiretorService diretorService;
-
-    public DiretorController() {
-        this.diretorService = new DiretorService(FakeDatabase.getInstance());
-    }
 
     //    CADASTRAR DIRETOR
     @PostMapping

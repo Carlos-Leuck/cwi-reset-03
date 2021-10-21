@@ -1,10 +1,12 @@
-package br.com.cwi.reset.carlosleuckmoreira;
+package br.com.cwi.reset.carlosleuckmoreira.repository;
 
 import br.com.cwi.reset.carlosleuckmoreira.model.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class FakeDatabase {
 
     private static FakeDatabase fakeDatabase = new FakeDatabase();

@@ -2,26 +2,27 @@ package br.com.cwi.reset.carlosleuckmoreira.service;
 
 import br.com.cwi.reset.carlosleuckmoreira.exception.*;
 import br.com.cwi.reset.carlosleuckmoreira.request.DiretorRequest;
-import br.com.cwi.reset.carlosleuckmoreira.FakeDatabase;
+import br.com.cwi.reset.carlosleuckmoreira.repository.FakeDatabase;
 import br.com.cwi.reset.carlosleuckmoreira.model.Diretor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class DiretorService {
-    private FakeDatabase fakeDatabase;
 
-    public DiretorService(FakeDatabase fakeDatabase) {
-        this.fakeDatabase = fakeDatabase;
-    }
+    @Autowired
+    private FakeDatabase fakeDatabase;
 
     public void cadastrarDiretor(DiretorRequest diretorRequest) {
 
 
         try {
-            verificarCampoObrigatorio(diretorRequest);
+            validarCampoObrigatorio(diretorRequest);
 
             if (!diretorRequest.getNome().contains(" ")) {
                 throw new NomeESobrenomeDevemSerInformadosException("Diretor");
@@ -63,7 +64,7 @@ public class DiretorService {
 
     }
 
-    private void verificarCampoObrigatorio(DiretorRequest diretorRequest) throws CampoObrigatorioNaoInformadoException {
+    private void validarCampoObrigatorio(DiretorRequest diretorRequest) throws CampoObrigatorioNaoInformadoException {
         if (diretorRequest.getNome() == null) {
             throw new CampoObrigatorioNaoInformadoException("nome");
         }
@@ -85,7 +86,7 @@ public class DiretorService {
                 throw new NaoExisteDiretorCadastradoException();
             }
 //            Não selecionou nenhum filtro
-            if (filtroNome==null) {
+            if (filtroNome == null) {
                 return lista;
             }
             for (Diretor diretor : lista) {
