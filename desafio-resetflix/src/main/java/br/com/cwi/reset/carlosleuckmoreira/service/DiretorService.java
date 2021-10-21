@@ -21,17 +21,8 @@ public class DiretorService {
 
 
         try {
-            if (diretorRequest.getNome() == null) {
-                throw new CampoObrigatorioNaoInformadoException("nome");
-            }
-            if (diretorRequest.getDataNascimento() == null) {
-                throw new CampoObrigatorioNaoInformadoException("data de nascimento");
-            }
-            if (diretorRequest.getAnoInicioAtividade() == null) {
-                throw new CampoObrigatorioNaoInformadoException("ano de inicio da atividade");
-            }
+            verificarCampoObrigatorio(diretorRequest);
 
-//          melhorar essa validação para não aceitar nome sendo dois espaços em branco
             if (!diretorRequest.getNome().contains(" ")) {
                 throw new NomeESobrenomeDevemSerInformadosException("Diretor");
             }
@@ -70,6 +61,18 @@ public class DiretorService {
         }
 
 
+    }
+
+    private void verificarCampoObrigatorio(DiretorRequest diretorRequest) throws CampoObrigatorioNaoInformadoException {
+        if (diretorRequest.getNome() == null) {
+            throw new CampoObrigatorioNaoInformadoException("nome");
+        }
+        if (diretorRequest.getDataNascimento() == null) {
+            throw new CampoObrigatorioNaoInformadoException("data de nascimento");
+        }
+        if (diretorRequest.getAnoInicioAtividade() == null) {
+            throw new CampoObrigatorioNaoInformadoException("ano de inicio da atividade");
+        }
     }
 
     public List<Diretor> listarDiretores(String filtroNome) {

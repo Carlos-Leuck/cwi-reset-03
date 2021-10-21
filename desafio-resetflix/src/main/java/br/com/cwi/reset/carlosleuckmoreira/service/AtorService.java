@@ -22,23 +22,9 @@ public class AtorService {
 
     public void criarAtor(AtorRequest atorRequest) {
 
-        //validação campo obrigatório
         try {
 
-            if (atorRequest.getNome() == null) {
-                throw new CampoObrigatorioNaoInformadoException("nome");
-            }
-            if (atorRequest.getDataNascimento() == null) {
-                throw new CampoObrigatorioNaoInformadoException("data de nascimento");
-            }
-            if (atorRequest.getAnoInicioAtividade() == null) {
-                throw new CampoObrigatorioNaoInformadoException("ano de inicio da atividade");
-            }
-            if (atorRequest.getStatusCarreira() == null) {
-                throw new CampoObrigatorioNaoInformadoException("status da carreira");
-            }
-
-            //validação nome e sobrenome:
+            verificarCampoObrigatorio(atorRequest);
 
 
             if (!atorRequest.getNome().contains(" ")) {
@@ -89,6 +75,21 @@ public class AtorService {
         }
 
 
+    }
+
+    private void verificarCampoObrigatorio(AtorRequest atorRequest) throws CampoObrigatorioNaoInformadoException {
+        if (atorRequest.getNome() == null) {
+            throw new CampoObrigatorioNaoInformadoException("nome");
+        }
+        if (atorRequest.getDataNascimento() == null) {
+            throw new CampoObrigatorioNaoInformadoException("data de nascimento");
+        }
+        if (atorRequest.getAnoInicioAtividade() == null) {
+            throw new CampoObrigatorioNaoInformadoException("ano de inicio da atividade");
+        }
+        if (atorRequest.getStatusCarreira() == null) {
+            throw new CampoObrigatorioNaoInformadoException("status da carreira");
+        }
     }
 
     public List<AtorEmAtividade> listarAtoresEmAtividade(String filtroNome) {

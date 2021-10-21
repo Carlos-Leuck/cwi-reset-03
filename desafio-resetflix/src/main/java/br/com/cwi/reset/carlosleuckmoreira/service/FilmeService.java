@@ -33,30 +33,7 @@ public class FilmeService {
         //  1.Campos com * são obrigatórios: nome, anoLancamento, capaFilme,idDiretor,idEstudio, resumo, personagens: OK
 
         try {
-            if (filmeRequest.getNome() == null) {
-                throw new CampoObrigatorioNaoInformadoException("nome");
-            }
-            if (filmeRequest.getAnoLancamento() == null) {
-                throw new CampoObrigatorioNaoInformadoException("anoLancamento");
-            }
-            if (filmeRequest.getCapaFilme() == null) {
-                throw new CampoObrigatorioNaoInformadoException("capaFilme");
-            }
-            if (filmeRequest.getIdDiretor() == null) {
-                throw new CampoObrigatorioNaoInformadoException("idDiretor");
-            }
-            if (filmeRequest.getIdEstudio() == null) {
-                throw new CampoObrigatorioNaoInformadoException("idEstudio");
-            }
-            if (filmeRequest.getResumo() == null) {
-                throw new CampoObrigatorioNaoInformadoException("resumo");
-            }
-            if (filmeRequest.getPersonagens() == null) {
-                throw new CampoObrigatorioNaoInformadoException("personagens");
-            }
-            if (filmeRequest.getGeneros() == null) {
-                throw new CampoObrigatorioNaoInformadoException("generos");
-            }
+            verificarCampoObrigatorio(filmeRequest);
 
 
             //  2.Caso não exista nenhum estúdio cadastrado para o id informado deve retornar erro
@@ -92,6 +69,33 @@ public class FilmeService {
         Filme filme = new Filme(filmeRequest);
         fakeDatabase.persisteFilme(filme);
 
+    }
+
+    private void verificarCampoObrigatorio(FilmeRequest filmeRequest) throws CampoObrigatorioNaoInformadoException {
+        if (filmeRequest.getNome() == null) {
+            throw new CampoObrigatorioNaoInformadoException("nome");
+        }
+        if (filmeRequest.getAnoLancamento() == null) {
+            throw new CampoObrigatorioNaoInformadoException("anoLancamento");
+        }
+        if (filmeRequest.getCapaFilme() == null) {
+            throw new CampoObrigatorioNaoInformadoException("capaFilme");
+        }
+        if (filmeRequest.getIdDiretor() == null) {
+            throw new CampoObrigatorioNaoInformadoException("idDiretor");
+        }
+        if (filmeRequest.getIdEstudio() == null) {
+            throw new CampoObrigatorioNaoInformadoException("idEstudio");
+        }
+        if (filmeRequest.getResumo() == null) {
+            throw new CampoObrigatorioNaoInformadoException("resumo");
+        }
+        if (filmeRequest.getPersonagens() == null) {
+            throw new CampoObrigatorioNaoInformadoException("personagens");
+        }
+        if (filmeRequest.getGeneros() == null) {
+            throw new CampoObrigatorioNaoInformadoException("generos");
+        }
     }
 
 

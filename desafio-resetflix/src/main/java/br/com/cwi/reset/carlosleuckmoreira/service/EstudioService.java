@@ -19,18 +19,7 @@ public class EstudioService {
     public void cadastrarEstudio(EstudioRequest estudioRequest) {
 
         try {
-            if (estudioRequest.getNome() == null) {
-                throw new CampoObrigatorioNaoInformadoException("nome");
-            }
-            if (estudioRequest.getDescricao() == null) {
-                throw new CampoObrigatorioNaoInformadoException("descrição");
-            }
-            if (estudioRequest.getDataCriacao() == null) {
-                throw new CampoObrigatorioNaoInformadoException("ano de inicio da atividade");
-            }
-            if (estudioRequest.getStatusAtividade() == null) {
-                throw new CampoObrigatorioNaoInformadoException("status atividade");
-            }
+            verificarCampoObrigatorio(estudioRequest);
 
 
             if (estudioRequest.getDataCriacao().isAfter(LocalDate.now())) {
@@ -55,6 +44,21 @@ public class EstudioService {
         }
 
 
+    }
+
+    private void verificarCampoObrigatorio(EstudioRequest estudioRequest) throws CampoObrigatorioNaoInformadoException {
+        if (estudioRequest.getNome() == null) {
+            throw new CampoObrigatorioNaoInformadoException("nome");
+        }
+        if (estudioRequest.getDescricao() == null) {
+            throw new CampoObrigatorioNaoInformadoException("descrição");
+        }
+        if (estudioRequest.getDataCriacao() == null) {
+            throw new CampoObrigatorioNaoInformadoException("ano de inicio da atividade");
+        }
+        if (estudioRequest.getStatusAtividade() == null) {
+            throw new CampoObrigatorioNaoInformadoException("status atividade");
+        }
     }
 
     public List<Estudio> listarEstudioes(String filtroNome) {
