@@ -82,12 +82,12 @@ public class DiretorService {
                 throw new NaoExisteDiretorCadastradoException();
             }
 //            Não selecionou nenhum filtro
-            if (filtroNome == "" || filtroNome==null) {
+            if (filtroNome==null) {
                 return lista;
             }
-            for (int i = 0; i < lista.size(); i++) {
-                if (lista.get(i).getNome().contains(filtroNome)) {
-                    listaDeRetorno.add(lista.get(i));
+            for (Diretor diretor : lista) {
+                if (diretor.getNome().contains(filtroNome)) {
+                    listaDeRetorno.add(diretor);
 
                 }
             }
@@ -111,9 +111,9 @@ public class DiretorService {
                 throw new CampoObrigatorioNaoInformadoException("ID");
             }
 
-            for (int i = 0; i < lista.size(); i++) {
-                if (lista.get(i).getId().equals(id)) {
-                    return lista.get(i);
+            for (Diretor diretor : lista) {
+                if (diretor.getId().equals(id)) {
+                    return diretor;
 
                 }
             }

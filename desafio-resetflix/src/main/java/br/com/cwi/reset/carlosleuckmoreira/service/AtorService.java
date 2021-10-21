@@ -111,14 +111,14 @@ public class AtorService {
             }
 
 //          Não selecionou nenhum filtro.
-            if (filtroNome == "" || filtroNome == null) {
+            if (filtroNome == null) {
                 return lista.stream().map(AtorEmAtividade::new).collect(Collectors.toList());
             }
 
 
-            for (int i = 0; i < lista.size(); i++) {
-                if (lista.get(i).getNome().contains(filtroNome)) {
-                    listaDeRetorno.add(lista.get(i));
+            for (Ator ator : lista) {
+                if (ator.getNome().contains(filtroNome)) {
+                    listaDeRetorno.add(ator);
                 }
             }
 
@@ -142,9 +142,9 @@ public class AtorService {
                 throw new CampoObrigatorioNaoInformadoException("ID");
             }
 
-            for (int i = 0; i < lista.size(); i++) {
-                if (lista.get(i).getId().equals(id)) {
-                    return lista.get(i);
+            for (Ator ator : lista) {
+                if (ator.getId().equals(id)) {
+                    return ator;
 
                 }
             }

@@ -68,13 +68,13 @@ public class EstudioService {
                 throw new NaoExisteEstudioCadastradoException();
             }
 
-            if (filtroNome == "" || filtroNome == null) {
+            if (filtroNome == null) {
                 return lista;
             }
 
-            for (int i = 0; i < lista.size(); i++) {
-                if (lista.get(i).getNome().contains(filtroNome)) {
-                    listaDeRetorno.add(lista.get(i));
+            for (Estudio estudio : lista) {
+                if (estudio.getNome().contains(filtroNome)) {
+                    listaDeRetorno.add(estudio);
                 }
             }
 
@@ -98,9 +98,9 @@ public class EstudioService {
                 throw new CampoObrigatorioNaoInformadoException("ID");
             }
 
-            for (int i = 0; i < lista.size(); i++) {
-                if (lista.get(i).getId().equals(id)) {
-                    return lista.get(i);
+            for (Estudio estudio : lista) {
+                if (estudio.getId().equals(id)) {
+                    return estudio;
                 }
             }
             throw new NaoExisteEstudioComOIdInformadoException(id);

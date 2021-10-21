@@ -1,5 +1,8 @@
 package br.com.cwi.reset.carlosleuckmoreira.model;
 
+import br.com.cwi.reset.carlosleuckmoreira.request.EstudioRequest;
+import br.com.cwi.reset.carlosleuckmoreira.request.FilmeRequest;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -23,6 +26,16 @@ public class Filme {
         this.diretor = diretor;
         this.personagens = personagens;
         this.resumo = resumo;
+    }
+
+
+    public Filme(FilmeRequest filmeRequest) {
+        this.nome = filmeRequest.getNome();
+        this.anoLancamento = filmeRequest.getAnoLancamento();
+        this.capaFilme = filmeRequest.getCapaFilme();
+        this.resumo = filmeRequest.getResumo();
+        this.generos = filmeRequest.getGeneros();
+
     }
 
     public Integer getId() {
