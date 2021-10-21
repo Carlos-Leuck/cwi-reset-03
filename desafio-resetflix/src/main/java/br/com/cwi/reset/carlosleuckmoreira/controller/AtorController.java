@@ -17,30 +17,22 @@ public class AtorController {
     @Autowired
     private AtorService atorService;
 
-    //TODO checar httpstatus dos métodos e testar atores em atividade
-
-    //  CADASTRAR ATOR
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void criarAtor(@RequestBody AtorRequest atorRequest) {
         this.atorService.criarAtor(atorRequest);
     }
 
-
-    //      LISTAR ATORES EM ATIVIDADE
     @GetMapping(path = "/em_atividade")
-    public List<AtorEmAtividade> listarAtoresEmAtividade(String filtroNome) {
+    public List<AtorEmAtividade> listarAtoresEmAtividade(@RequestParam(value = "nome", required = false) String filtroNome) {
         return this.atorService.listarAtoresEmAtividade(filtroNome);
     }
 
-    //  CONSULTAR ATOR
     @GetMapping(value = "/{id}")
     public Ator consultarAtor(@PathVariable Integer id) {
         return this.atorService.consultarAtor(id);
     }
 
-
-    //  TODOS OS ATORES
     @GetMapping
     public List<Ator> consultarAtores() {
         return this.atorService.consultarAtores();

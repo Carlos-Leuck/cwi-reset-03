@@ -16,7 +16,6 @@ public class DiretorController {
     @Autowired
     private DiretorService diretorService;
 
-    //    CADASTRAR DIRETOR
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void cadastrarDiretor(@RequestBody DiretorRequest diretorRequest) {
@@ -24,16 +23,10 @@ public class DiretorController {
 
     }
 
-
-    //   LISTAR DIRETORES
-
     @GetMapping
     public List<Diretor> listarDiretores(@RequestParam(value = "nome", required = false) String filtroNome) {
         return this.diretorService.listarDiretores(filtroNome);
     }
-
-
-//    CONSULTAR DIRETOR
 
     @GetMapping(value = "/{id}")
     public Diretor consultarDiretor(@PathVariable Integer id) {

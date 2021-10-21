@@ -16,7 +16,6 @@ public class EstudioController {
     @Autowired
     private EstudioService estudioService;
 
-    //    CADASTRAR ESTUDIO
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void criarEstudio(@RequestBody EstudioRequest estudioRequest) {
@@ -24,16 +23,10 @@ public class EstudioController {
 
     }
 
-
-    //   LISTAR ESTUDIO
-
     @GetMapping
     public List<Estudio> consultarEstudios(@RequestParam(value = "nome", required = false) String filtroNome) {
         return this.estudioService.listarEstudios(filtroNome);
     }
-
-
-//    CONSULTAR ESTUDIO
 
     @GetMapping(value = "/{id}")
     public Estudio consultarEstudio(@PathVariable Integer id) {
