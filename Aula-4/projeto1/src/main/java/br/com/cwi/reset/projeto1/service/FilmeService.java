@@ -3,6 +3,7 @@ package br.com.cwi.reset.projeto1.service;
 import br.com.cwi.reset.projeto1.domain.Filme;
 import br.com.cwi.reset.projeto1.exception.FilmeJaExistenteException;
 import br.com.cwi.reset.projeto1.exception.FilmeNaoExistenteException;
+import br.com.cwi.reset.projeto1.repository.FilmeRepository;
 import br.com.cwi.reset.projeto1.repository.FilmeRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +13,9 @@ import java.util.List;
 @Service
 public class FilmeService {
 
+//    Observação: tratar atributo pela interface! FilmeRepository e não pela classe que implementa ela.
     @Autowired
-    private FilmeRepositoryImpl repository;
+    private FilmeRepository repository;
 
     public Filme salvar(Filme filme) throws FilmeJaExistenteException {
         Filme filmeJaExistente = repository.findByNome(filme.getNome());

@@ -1,7 +1,6 @@
 package br.com.cwi.reset.projeto1.repository;
 
 import br.com.cwi.reset.projeto1.domain.Pet;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -9,8 +8,7 @@ import java.util.List;
 @Repository
 public class PetRepositoryImpl implements PetRepository {
 
-   @Autowired
-    private List<Pet> pets;
+    private static List<Pet> pets;
 
     public Pet buscarPeloNome(String nome) {
         for (Pet pet : pets) {

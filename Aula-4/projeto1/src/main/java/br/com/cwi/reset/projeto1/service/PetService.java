@@ -3,16 +3,19 @@ package br.com.cwi.reset.projeto1.service;
 import br.com.cwi.reset.projeto1.domain.Pet;
 import br.com.cwi.reset.projeto1.exception.PetJaExistenteException;
 import br.com.cwi.reset.projeto1.exception.PetNaoExistenteException;
-import br.com.cwi.reset.projeto1.repository.PetRepositoryImpl;
+import br.com.cwi.reset.projeto1.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class PetService {
 
+    //    Observação: tratar atributo pela interface! FilmeRepository e não pela classe que implementa ela.
+
     @Autowired
-    private PetRepositoryImpl repository;
+    private PetRepository repository;
 
     public Pet buscarPeloNome(String nome) throws PetNaoExistenteException {
         Pet pet = repository.buscarPeloNome(nome);
