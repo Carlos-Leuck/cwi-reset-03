@@ -3,22 +3,26 @@ package br.com.cwi.reset.projeto1.service;
 import br.com.cwi.reset.projeto1.domain.Filme;
 import br.com.cwi.reset.projeto1.exception.FilmeJaExistenteException;
 import br.com.cwi.reset.projeto1.exception.FilmeNaoExistenteException;
-import br.com.cwi.reset.projeto1.repository.FilmeRepository;
+import br.com.cwi.reset.projeto1.repository.FilmeRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class FilmeService {
 
-    private FilmeRepository repository = new FilmeRepository();
+    @Autowired
+    private FilmeRepositoryImpl repository;
 
     public Filme salvar(Filme filme) throws FilmeJaExistenteException {
-       Filme filmeJaExistente = repository.findByNome(filme.getNome());
+        Filme filmeJaExistente = repository.findByNome(filme.getNome());
 
-       if (filmeJaExistente != null) {
-           throw new FilmeJaExistenteException("Filme com o nome " + filme.getNome() + " já existe");
-       }
-       repository.save(filme);
-       return filme;
+        if (filmeJaExistente != null) {
+            throw new FilmeJaExistenteException("Filme com o nome " + filme.getNome() + " já existe");
+        }
+        repository.save(filme);
+        return filme;
     }
 
     public List<Filme> listarTodos() {
@@ -39,7 +43,7 @@ public class FilmeService {
 
     public Filme atualizar(Filme filme) throws FilmeNaoExistenteException {
         Filme filmeJaCadastrado = buscarPorNome(filme.getNome());
-        if (filme == null) {
+        if (filmeJaCadastrado == null) {
             throw new FilmeNaoExistenteException("Filme com o nome " + filme.getNome() + " não existe");
         }
         return repository.update(filme);

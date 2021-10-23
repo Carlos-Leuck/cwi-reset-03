@@ -1,13 +1,17 @@
 package br.com.cwi.reset.projeto1.repository;
 
 import br.com.cwi.reset.projeto1.domain.Filme;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilmeRepository {
+@Repository
+public class FilmeRepositoryImpl implements FilmeRepository {
 
-    private List<Filme> filmes = new ArrayList<>();
+    @Autowired
+    private List<Filme> filmes;
 
     public Filme findByNome(String nome) {
         for (Filme filme : filmes) {
@@ -37,7 +41,7 @@ public class FilmeRepository {
         }
         return null;
     }
-    
+
     public List<Filme> findAll() {
         return filmes;
     }

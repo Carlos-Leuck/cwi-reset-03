@@ -1,6 +1,5 @@
 package br.com.cwi.reset.carlosleuckmoreira.model;
 
-import br.com.cwi.reset.carlosleuckmoreira.request.EstudioRequest;
 import br.com.cwi.reset.carlosleuckmoreira.request.FilmeRequest;
 
 import java.time.LocalDate;
@@ -16,6 +15,9 @@ public class Filme {
     private List<PersonagemAtor> personagens;
     private String resumo;
 
+    //  GERAR ID AUTOMATICAMENTE
+    static int contador = 0;
+
     public Filme(Integer id, String nome, LocalDate anoLancamento, String capaFilme, List<Genero> generos,
                  Diretor diretor, List<PersonagemAtor> personagens, String resumo) {
         this.id = id;
@@ -30,6 +32,8 @@ public class Filme {
 
 
     public Filme(FilmeRequest filmeRequest) {
+        contador++;
+        id = contador;
         this.nome = filmeRequest.getNome();
         this.anoLancamento = filmeRequest.getAnoLancamento();
         this.capaFilme = filmeRequest.getCapaFilme();
