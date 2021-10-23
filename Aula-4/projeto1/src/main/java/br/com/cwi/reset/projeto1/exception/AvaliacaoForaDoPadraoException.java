@@ -1,4 +1,4 @@
-package br.com.cwi.reset.projeto1.domain;
+package br.com.cwi.reset.projeto1.exception;
 
 public class AvaliacaoForaDoPadraoException extends Exception {
 
