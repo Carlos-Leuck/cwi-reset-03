@@ -1,6 +1,7 @@
 package br.com.cwi.reset.carlosleuckmoreira.request;
 
 import br.com.cwi.reset.carlosleuckmoreira.model.Genero;
+import br.com.cwi.reset.carlosleuckmoreira.model.PersonagemAtor;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,10 +15,10 @@ public class FilmeRequest {
     private Integer idDiretor;
     private Integer idEstudio;
     private String resumo;
-    private List<PersonagemRequest> personagens;
+    private List<PersonagemAtor> personagens;
 
     public FilmeRequest(String nome, LocalDate anoLancamento, String capaFilme, List<Genero> generos,
-                        Integer idDiretor, Integer idEstudio, String resumo, List<PersonagemRequest> personagens) {
+                        Integer idDiretor, Integer idEstudio, String resumo, List<PersonagemAtor> personagens) {
         this.nome = nome;
         this.anoLancamento = anoLancamento;
         this.capaFilme = capaFilme;
@@ -56,7 +57,7 @@ public class FilmeRequest {
         return resumo;
     }
 
-    public List<PersonagemRequest> getPersonagens() {
+    public List<PersonagemAtor> getPersonagens() {
         return personagens;
     }
 }

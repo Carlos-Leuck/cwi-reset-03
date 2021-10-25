@@ -52,7 +52,8 @@ public class DiretorService {
                 }
             }
 
-            Diretor diretor = new Diretor(diretorRequest);
+            final Diretor diretor = new Diretor(diretorRequest.getNome(), diretorRequest.getDataNascimento(),
+                    diretorRequest.getAnoInicioAtividade());
             fakeDatabase.persisteDiretor(diretor);
 
         } catch (CampoObrigatorioNaoInformadoException | NomeESobrenomeDevemSerInformadosException |

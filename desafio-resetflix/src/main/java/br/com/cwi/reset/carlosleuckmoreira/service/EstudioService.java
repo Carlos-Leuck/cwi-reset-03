@@ -28,7 +28,7 @@ public class EstudioService {
 
             validarEstudioJaCadastradComNomeMesmoNome(estudioRequest);
 
-            Estudio estudio = new Estudio(estudioRequest);
+            final Estudio estudio = new Estudio(estudioRequest.getNome(), estudioRequest.getDescricao(), estudioRequest.getDataCriacao(), estudioRequest.getStatusAtividade());
             fakeDatabase.persisteEstudio(estudio);
 
         } catch (CampoObrigatorioNaoInformadoException |

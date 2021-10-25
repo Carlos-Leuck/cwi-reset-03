@@ -52,7 +52,7 @@ public class AtorService {
 
             validarSeJaExisteAtorCadastradoComMesmoNome(atorRequest);
 
-            Ator ator = new Ator(atorRequest);
+            Ator ator = new Ator(atorRequest.getNome(), atorRequest.getDataNascimento(), atorRequest.getStatusCarreira(), atorRequest.getAnoInicioAtividade());
             fakeDatabase.persisteAtor(ator);
 
         } catch (CampoObrigatorioNaoInformadoException | NomeESobrenomeDevemSerInformadosException

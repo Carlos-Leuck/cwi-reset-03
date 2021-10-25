@@ -30,7 +30,7 @@ public class FilmeService {
             diretorService.consultarDiretor(filmeRequest.getIdDiretor());
 
             for (int i = 0; i < fakeDatabase.recuperaAtores().size(); i++) {
-                atorService.consultarAtor(filmeRequest.getPersonagens().get(i).getIdAtor());
+                atorService.consultarAtor(filmeRequest.getPersonagens().get(i).getAtor().getId());
             }
 
            /*   5.Não é permitido cadastrar filmes que apresentem duas vezes o mesmo gênero na lista informada
@@ -51,7 +51,9 @@ public class FilmeService {
             */
 
 
-        Filme filme = new Filme(filmeRequest);
+        Filme filme = new Filme(filmeRequest.getNome(),filmeRequest.getAnoLancamento(),filmeRequest.getCapaFilme(),
+                filmeRequest.getGeneros(),estudioService.consultarEstudio(filmeRequest.getIdDiretor()),
+                diretorService.consultarDiretor(filmeRequest.getIdDiretor()),filmeRequest.getPersonagens(),filmeRequest.getResumo());
         fakeDatabase.persisteFilme(filme);
 
     }
