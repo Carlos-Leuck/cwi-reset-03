@@ -2,10 +2,10 @@ package br.com.cwi.reset.carlosleuckmoreira.service;
 
 import br.com.cwi.reset.carlosleuckmoreira.model.StatusCarreira;
 import br.com.cwi.reset.carlosleuckmoreira.exception.*;
+import br.com.cwi.reset.carlosleuckmoreira.repository.AtorRepository;
 import br.com.cwi.reset.carlosleuckmoreira.response.AtorEmAtividade;
 import br.com.cwi.reset.carlosleuckmoreira.request.AtorRequest;
-import br.com.cwi.reset.carlosleuckmoreira.repository.FakeDatabase;
-import br.com.cwi.reset.carlosleuckmoreira.model.Ator;
+import br.com.cwi.reset.carlosleuckmoreira.model.domain.Ator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Service
 public class AtorService {
     @Autowired
-    private FakeDatabase fakeDatabase;
+    private AtorRepository atorRepository;
 
     public void criarAtor(AtorRequest atorRequest) {
 
@@ -53,7 +53,7 @@ public class AtorService {
             validarSeJaExisteAtorCadastradoComMesmoNome(atorRequest);
 
             Ator ator = new Ator(atorRequest.getNome(), atorRequest.getDataNascimento(), atorRequest.getStatusCarreira(), atorRequest.getAnoInicioAtividade());
-            fakeDatabase.persisteAtor(ator);
+            atorRepository.save(ator);
 
         } catch (CampoObrigatorioNaoInformadoException | NomeESobrenomeDevemSerInformadosException
                 | AtorJaCadastradoException | DataDeNascimentoInvalidaException
@@ -67,8 +67,9 @@ public class AtorService {
     private void validarSeJaExisteAtorCadastradoComMesmoNome(AtorRequest atorRequest) throws AtorJaCadastradoException {
         String nomeAtor;
         nomeAtor = atorRequest.getNome();
-        for (int i = 0; i < fakeDatabase.recuperaAtores().size(); i++) {
-            if (fakeDatabase.recuperaAtores().get(i).getNome().equals(nomeAtor)) {
+
+        for (int i = 0; i < atorRepository.findAll().size(); i++) {
+            if (atorRepository.findAll().get(i).getNome().equals(nomeAtor)) {
                 throw new AtorJaCadastradoException(nomeAtor);
             }
         }
@@ -91,7 +92,7 @@ public class AtorService {
 
     public List<AtorEmAtividade> listarAtoresEmAtividade(String filtroNome) {
         List<Ator> lista = new ArrayList();
-        lista = fakeDatabase.recuperaAtores();
+        lista = atorRepository.findAll();
         List<Ator> listaDeRetorno = new ArrayList();
 
 
@@ -129,7 +130,7 @@ public class AtorService {
 
     public Ator consultarAtor(Integer id) {
         List<Ator> lista = new ArrayList();
-        lista = fakeDatabase.recuperaAtores();
+        lista = atorRepository.findAtorById(id);
 
         try {
             if (id == null) {
@@ -153,7 +154,7 @@ public class AtorService {
 
     public List<Ator> consultarAtores() {
         try {
-            if (fakeDatabase.recuperaAtores().isEmpty()) {
+            if (atorRepository.findAll().isEmpty()) {
                 throw new NaoExisteAtorCadastradoException();
 
             }
@@ -161,6 +162,6 @@ public class AtorService {
             e.printStackTrace();
         }
 
-        return fakeDatabase.recuperaAtores();
+        return atorRepository.findAll();
     }
 }

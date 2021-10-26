@@ -1,9 +1,9 @@
 package br.com.cwi.reset.carlosleuckmoreira.service;
 
 import br.com.cwi.reset.carlosleuckmoreira.exception.*;
+import br.com.cwi.reset.carlosleuckmoreira.repository.EstudioRepository;
 import br.com.cwi.reset.carlosleuckmoreira.request.EstudioRequest;
-import br.com.cwi.reset.carlosleuckmoreira.repository.FakeDatabase;
-import br.com.cwi.reset.carlosleuckmoreira.model.Estudio;
+import br.com.cwi.reset.carlosleuckmoreira.model.domain.Estudio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class EstudioService {
     @Autowired
-    private FakeDatabase fakeDatabase;
+    private EstudioRepository estudioRepository;
 
     public void cadastrarEstudio(EstudioRequest estudioRequest) {
 
@@ -29,7 +29,7 @@ public class EstudioService {
             validarEstudioJaCadastradComNomeMesmoNome(estudioRequest);
 
             final Estudio estudio = new Estudio(estudioRequest.getNome(), estudioRequest.getDescricao(), estudioRequest.getDataCriacao(), estudioRequest.getStatusAtividade());
-            fakeDatabase.persisteEstudio(estudio);
+            estudioRepository.save(estudio);
 
         } catch (CampoObrigatorioNaoInformadoException |
                 DataCriacaoEstudioNaoPodeSerMaiorQueDataAtualException |
@@ -41,8 +41,8 @@ public class EstudioService {
     private void validarEstudioJaCadastradComNomeMesmoNome(EstudioRequest estudioRequest) throws EstudioJaCadastradoException {
         String nomeEstudio;
         nomeEstudio = estudioRequest.getNome();
-        for (int i = 0; i < fakeDatabase.recuperaEstudios().size(); i++) {
-            if (fakeDatabase.recuperaEstudios().get(i).getNome().equals(nomeEstudio)) {
+        for (int i = 0; i < estudioRepository.findAll().size(); i++) {
+            if (estudioRepository.findAll().get(i).getNome().equals(nomeEstudio)) {
                 throw new EstudioJaCadastradoException(nomeEstudio);
             }
         }
@@ -66,7 +66,7 @@ public class EstudioService {
     public List<Estudio> listarEstudios(String filtroNome) {
         List<Estudio> lista;
         List<Estudio> listaDeRetorno = new ArrayList();
-        lista = fakeDatabase.recuperaEstudios();
+        lista = estudioRepository.findAll();
 
 
         try {
@@ -97,7 +97,7 @@ public class EstudioService {
 
     public Estudio consultarEstudio(Integer id) {
         List<Estudio> lista = new ArrayList();
-        lista = fakeDatabase.recuperaEstudios();
+        lista = estudioRepository.findAll();
 
         try {
             if (id == null) {

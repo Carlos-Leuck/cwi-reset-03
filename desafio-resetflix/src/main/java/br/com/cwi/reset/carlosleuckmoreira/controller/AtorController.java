@@ -1,6 +1,6 @@
 package br.com.cwi.reset.carlosleuckmoreira.controller;
 
-import br.com.cwi.reset.carlosleuckmoreira.model.Ator;
+import br.com.cwi.reset.carlosleuckmoreira.model.domain.Ator;
 import br.com.cwi.reset.carlosleuckmoreira.request.AtorRequest;
 import br.com.cwi.reset.carlosleuckmoreira.response.AtorEmAtividade;
 import br.com.cwi.reset.carlosleuckmoreira.service.AtorService;
@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,16 +20,16 @@ public class AtorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void criarAtor(@RequestBody AtorRequest atorRequest) {
+    public void criarAtor(@RequestBody @Valid AtorRequest atorRequest) {
         this.atorService.criarAtor(atorRequest);
     }
 
     @GetMapping(path = "/em_atividade")
-    public List<AtorEmAtividade> listarAtoresEmAtividade(@RequestParam(value = "nome", required = false) String filtroNome) {
+    public List<AtorEmAtividade> listarAtoresEmAtividade(@RequestParam String filtroNome) {
         return this.atorService.listarAtoresEmAtividade(filtroNome);
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(path = "/{id}")
     public Ator consultarAtor(@PathVariable Integer id) {
         return this.atorService.consultarAtor(id);
     }
@@ -38,8 +39,6 @@ public class AtorController {
         return this.atorService.consultarAtores();
     }
 }
-
-
 
 
 

@@ -1,6 +1,6 @@
 package br.com.cwi.reset.carlosleuckmoreira.controller;
 
-import br.com.cwi.reset.carlosleuckmoreira.model.Diretor;
+import br.com.cwi.reset.carlosleuckmoreira.model.domain.Diretor;
 import br.com.cwi.reset.carlosleuckmoreira.request.DiretorRequest;
 import br.com.cwi.reset.carlosleuckmoreira.service.DiretorService;
 import org.springframework.beans.factory.annotation.Autowired;

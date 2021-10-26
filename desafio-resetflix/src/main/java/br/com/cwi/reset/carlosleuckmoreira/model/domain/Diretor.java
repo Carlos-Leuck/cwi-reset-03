@@ -1,4 +1,4 @@
-package br.com.cwi.reset.carlosleuckmoreira.model;
+package br.com.cwi.reset.carlosleuckmoreira.model.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,6 +1,6 @@
 package br.com.cwi.reset.carlosleuckmoreira.controller;
 
-import br.com.cwi.reset.carlosleuckmoreira.model.Estudio;
+import br.com.cwi.reset.carlosleuckmoreira.model.domain.Estudio;
 import br.com.cwi.reset.carlosleuckmoreira.request.EstudioRequest;
 import br.com.cwi.reset.carlosleuckmoreira.service.EstudioService;
 import org.springframework.beans.factory.annotation.Autowired;

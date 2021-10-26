@@ -1,9 +1,9 @@
 package br.com.cwi.reset.carlosleuckmoreira.service;
 
 import br.com.cwi.reset.carlosleuckmoreira.exception.*;
+import br.com.cwi.reset.carlosleuckmoreira.repository.DiretorRepository;
 import br.com.cwi.reset.carlosleuckmoreira.request.DiretorRequest;
-import br.com.cwi.reset.carlosleuckmoreira.repository.FakeDatabase;
-import br.com.cwi.reset.carlosleuckmoreira.model.Diretor;
+import br.com.cwi.reset.carlosleuckmoreira.model.domain.Diretor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.List;
 public class DiretorService {
 
     @Autowired
-    private FakeDatabase fakeDatabase;
+    private DiretorRepository diretorRepository;
 
     public void cadastrarDiretor(DiretorRequest diretorRequest) {
 
@@ -46,15 +46,15 @@ public class DiretorService {
 
             String nomeDiretor;
             nomeDiretor = diretorRequest.getNome();
-            for (int i = 0; i < fakeDatabase.recuperaDiretores().size(); i++) {
-                if (fakeDatabase.recuperaDiretores().get(i).getNome().equals(nomeDiretor)) {
+            for (int i = 0; i < diretorRepository.findAll().size(); i++) {
+                if (diretorRepository.findAll().get(i).getNome().equals(nomeDiretor)) {
                     throw new DiretorJaCadastradoException(nomeDiretor);
                 }
             }
 
             final Diretor diretor = new Diretor(diretorRequest.getNome(), diretorRequest.getDataNascimento(),
                     diretorRequest.getAnoInicioAtividade());
-            fakeDatabase.persisteDiretor(diretor);
+            diretorRepository.save(diretor);
 
         } catch (CampoObrigatorioNaoInformadoException | NomeESobrenomeDevemSerInformadosException |
                 DataDeNascimentoInvalidaException | AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoAtorException
@@ -80,7 +80,7 @@ public class DiretorService {
     public List<Diretor> listarDiretores(String filtroNome) {
         List<Diretor> lista = new ArrayList();
         List<Diretor> listaDeRetorno = new ArrayList();
-        lista = fakeDatabase.recuperaDiretores();
+        lista = diretorRepository.findAll();
 
         try {
             if (lista.isEmpty()) {
@@ -109,7 +109,7 @@ public class DiretorService {
 
     public Diretor consultarDiretor(Integer id) {
         List<Diretor> lista = new ArrayList();
-        lista = fakeDatabase.recuperaDiretores();
+        lista = diretorRepository.findAll();
 
         try {
             if (id == null) {

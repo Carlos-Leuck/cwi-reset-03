@@ -1,4 +1,6 @@
-package br.com.cwi.reset.carlosleuckmoreira.model;
+package br.com.cwi.reset.carlosleuckmoreira.model.domain;
+
+import br.com.cwi.reset.carlosleuckmoreira.model.TipoAtuacao;
 
 import javax.persistence.*;
 import java.util.Objects;

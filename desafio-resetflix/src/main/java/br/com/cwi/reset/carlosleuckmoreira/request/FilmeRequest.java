@@ -1,19 +1,23 @@
 package br.com.cwi.reset.carlosleuckmoreira.request;
 
 import br.com.cwi.reset.carlosleuckmoreira.model.Genero;
-import br.com.cwi.reset.carlosleuckmoreira.model.PersonagemAtor;
+import br.com.cwi.reset.carlosleuckmoreira.model.domain.PersonagemAtor;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.List;
 
 public class FilmeRequest {
 
+    @NotEmpty(message = "Campo obrigatório não informado. Favor informar o campo nome.")
     private String nome;
     private LocalDate anoLancamento;
+    @NotEmpty(message = "Campo obrigatório não informado. Favor informar o campo capaFilme.")
     private String capaFilme;
     private List<Genero> generos;
     private Integer idDiretor;
     private Integer idEstudio;
+    @NotEmpty(message = "Campo obrigatório não informado. Favor informar o campo resumo.")
     private String resumo;
     private List<PersonagemAtor> personagens;
 

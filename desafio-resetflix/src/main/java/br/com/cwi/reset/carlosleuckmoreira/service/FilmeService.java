@@ -1,9 +1,9 @@
 package br.com.cwi.reset.carlosleuckmoreira.service;
 
 import br.com.cwi.reset.carlosleuckmoreira.exception.*;
+import br.com.cwi.reset.carlosleuckmoreira.repository.FilmeRepository;
 import br.com.cwi.reset.carlosleuckmoreira.request.FilmeRequest;
-import br.com.cwi.reset.carlosleuckmoreira.repository.FakeDatabase;
-import br.com.cwi.reset.carlosleuckmoreira.model.Filme;
+import br.com.cwi.reset.carlosleuckmoreira.model.domain.Filme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class FilmeService {
 
     @Autowired
-    private FakeDatabase fakeDatabase;
+    private FilmeRepository filmeRepository;
     @Autowired
     private EstudioService estudioService;
     @Autowired
@@ -29,7 +29,7 @@ public class FilmeService {
 
             diretorService.consultarDiretor(filmeRequest.getIdDiretor());
 
-            for (int i = 0; i < fakeDatabase.recuperaAtores().size(); i++) {
+            for (int i = 0; i < filmeRepository.findAll().size(); i++) {
                 atorService.consultarAtor(filmeRequest.getPersonagens().get(i).getAtor().getId());
             }
 
@@ -54,7 +54,7 @@ public class FilmeService {
         Filme filme = new Filme(filmeRequest.getNome(),filmeRequest.getAnoLancamento(),filmeRequest.getCapaFilme(),
                 filmeRequest.getGeneros(),estudioService.consultarEstudio(filmeRequest.getIdDiretor()),
                 diretorService.consultarDiretor(filmeRequest.getIdDiretor()),filmeRequest.getPersonagens(),filmeRequest.getResumo());
-        fakeDatabase.persisteFilme(filme);
+        filmeRepository.save(filme);
 
     }
 

@@ -1,6 +1,6 @@
 package br.com.cwi.reset.carlosleuckmoreira.response;
 
-import br.com.cwi.reset.carlosleuckmoreira.model.Ator;
+import br.com.cwi.reset.carlosleuckmoreira.model.domain.Ator;
 
 import java.time.LocalDate;
 
