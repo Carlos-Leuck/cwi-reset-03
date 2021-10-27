@@ -25,7 +25,7 @@ public class AtorController {
     }
 
     @GetMapping(path = "/em_atividade")
-    public List<AtorEmAtividade> listarAtoresEmAtividade(@RequestParam String filtroNome) {
+    public List<AtorEmAtividade> listarAtoresEmAtividade(@RequestParam(value = "nome", required = false) String filtroNome) {
         return this.atorService.listarAtoresEmAtividade(filtroNome);
     }
 

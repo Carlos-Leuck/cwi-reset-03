@@ -7,8 +7,7 @@ import br.com.cwi.reset.carlosleuckmoreira.model.domain.Diretor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,114 +19,83 @@ public class DiretorService {
 
     public void cadastrarDiretor(DiretorRequest diretorRequest) {
 
-
         try {
-            validarCampoObrigatorio(diretorRequest);
 
-            if (!diretorRequest.getNome().contains(" ")) {
-                throw new NomeESobrenomeDevemSerInformadosException("Diretor");
-            }
-
-            LocalDate nascimento = diretorRequest.getDataNascimento();
-            Integer inicioAtividade = diretorRequest.getAnoInicioAtividade();
-
-            SimpleDateFormat newFormat = new SimpleDateFormat("yyyy");
-            String dataInteiroToLocalDate = newFormat.format(inicioAtividade);
-
-            //Se der valor positivo então inicioAtividade > data de nascimento
-            if (nascimento.compareTo(LocalDate.now()) > 0) {
-                throw new DataDeNascimentoInvalidaException();
-            }
-
-            int compararDatas = dataInteiroToLocalDate.compareTo(String.valueOf(nascimento));
-            if (compararDatas <= 0) {
-                throw new AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoAtorException();
-            }
-
-            String nomeDiretor;
-            nomeDiretor = diretorRequest.getNome();
-            for (int i = 0; i < diretorRepository.findAll().size(); i++) {
-                if (diretorRepository.findAll().get(i).getNome().equals(nomeDiretor)) {
-                    throw new DiretorJaCadastradoException(nomeDiretor);
-                }
-            }
+            validarSeNomeESobreNomeForamInformados(diretorRequest);
+            validarSeAnoDeInicioDeAtividadeMaiorQueDataNascimentoDiretor(diretorRequest);
+            validarSeJaExisteDiretorCadastradoComMesmoNome(diretorRequest);
 
             final Diretor diretor = new Diretor(diretorRequest.getNome(), diretorRequest.getDataNascimento(),
                     diretorRequest.getAnoInicioAtividade());
             diretorRepository.save(diretor);
 
-        } catch (CampoObrigatorioNaoInformadoException | NomeESobrenomeDevemSerInformadosException |
-                DataDeNascimentoInvalidaException | AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoAtorException
-                | DiretorJaCadastradoException e) {
+        } catch (NomeESobrenomeDevemSerInformadosException | DiretorJaCadastradoException |
+                AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoDiretorException e) {
             e.printStackTrace();
-        }
-
-
-    }
-
-    private void validarCampoObrigatorio(DiretorRequest diretorRequest) throws CampoObrigatorioNaoInformadoException {
-        if (diretorRequest.getNome() == null) {
-            throw new CampoObrigatorioNaoInformadoException("nome");
-        }
-        if (diretorRequest.getDataNascimento() == null) {
-            throw new CampoObrigatorioNaoInformadoException("data de nascimento");
-        }
-        if (diretorRequest.getAnoInicioAtividade() == null) {
-            throw new CampoObrigatorioNaoInformadoException("ano de inicio da atividade");
         }
     }
 
     public List<Diretor> listarDiretores(String filtroNome) {
-        List<Diretor> lista = new ArrayList();
-        List<Diretor> listaDeRetorno = new ArrayList();
-        lista = diretorRepository.findAll();
+        List<Diretor> diretoresCadastrados = diretorRepository.findAll();
+        List<Diretor> retorno = new ArrayList<>();
 
         try {
-            if (lista.isEmpty()) {
+            if (diretoresCadastrados.isEmpty()) {
                 throw new NaoExisteDiretorCadastradoException();
             }
-//            Não selecionou nenhum filtro
             if (filtroNome == null) {
-                return lista;
+                return diretoresCadastrados;
             }
-            for (Diretor diretor : lista) {
-                if (diretor.getNome().contains(filtroNome)) {
-                    listaDeRetorno.add(diretor);
 
+            for (Diretor diretor : diretoresCadastrados) {
+                if (diretor.getNome().contains(filtroNome)) {
+                    retorno.add(diretor);
                 }
             }
-            if (listaDeRetorno.isEmpty())
-                throw new NaoExisteDiretorComOFiltroInformadoException(filtroNome);
 
+            if (retorno.isEmpty())
+                throw new NaoExisteDiretorComOFiltroInformadoException(filtroNome);
         } catch (NaoExisteDiretorCadastradoException | NaoExisteDiretorComOFiltroInformadoException e) {
             e.printStackTrace();
         }
-        return listaDeRetorno;
-
+        return retorno;
     }
 
 
-    public Diretor consultarDiretor(Integer id) {
-        List<Diretor> lista = new ArrayList();
-        lista = diretorRepository.findAll();
+    public Diretor consultarDiretor(@NotNull(message = "Campo obrigatório não informado. Favor informar o campo id.") Integer id) {
 
+        Diretor diretorFiltradoPeloId = diretorRepository.findDiretorById(id);
         try {
-            if (id == null) {
-                throw new CampoObrigatorioNaoInformadoException("ID");
+            if (diretorFiltradoPeloId == null) {
+                throw new NaoExisteDiretorComOIdInformadoException(id);
             }
-
-            for (Diretor diretor : lista) {
-                if (diretor.getId().equals(id)) {
-                    return diretor;
-
-                }
-            }
-            throw new NaoExisteDiretorComOIdInformadoException(id);
-
-        } catch (CampoObrigatorioNaoInformadoException | NaoExisteDiretorComOIdInformadoException e) {
+        } catch (NaoExisteDiretorComOIdInformadoException e) {
             e.printStackTrace();
         }
-        return null;
+        return diretorFiltradoPeloId;
+    }
+
+    private void validarSeAnoDeInicioDeAtividadeMaiorQueDataNascimentoDiretor(DiretorRequest diretorRequest) throws AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoDiretorException {
+        if (diretorRequest.getAnoInicioAtividade() <= diretorRequest.getDataNascimento().getYear()) {
+            throw new AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoDiretorException();
+        }
+    }
+
+    private void validarSeNomeESobreNomeForamInformados(DiretorRequest diretorRequest) throws NomeESobrenomeDevemSerInformadosException {
+        if (diretorRequest.getNome().split(" ").length < 2) {
+            throw new NomeESobrenomeDevemSerInformadosException("diretor");
+        }
+    }
+
+    private void validarSeJaExisteDiretorCadastradoComMesmoNome(DiretorRequest diretorRequest) throws DiretorJaCadastradoException {
+        String nomeDiretor;
+        nomeDiretor = diretorRequest.getNome();
+
+        for (int i = 0; i < diretorRepository.findAll().size(); i++) {
+            if (diretorRepository.findAll().get(i).getNome().equals(nomeDiretor)) {
+                throw new DiretorJaCadastradoException(nomeDiretor);
+            }
+        }
     }
 }
 

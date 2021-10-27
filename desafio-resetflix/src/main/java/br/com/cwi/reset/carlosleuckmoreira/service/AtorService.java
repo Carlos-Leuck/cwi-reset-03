@@ -23,8 +23,8 @@ public class AtorService {
 
         try {
 
-            nomeESobreNomeDevemSerInformados(atorRequest);
-            anoDeInicioDeAtividadeDeveSerMaiorQueDataNascimentoAtor(atorRequest);
+            validarSeNomeESobreNomeForamInformados(atorRequest);
+            validarSeAnoDeInicioDeAtividadeMaiorQueDataNascimentoAtor(atorRequest);
             validarSeJaExisteAtorCadastradoComMesmoNome(atorRequest);
 
             Ator ator = new Ator(atorRequest.getNome(), atorRequest.getDataNascimento(), atorRequest.getStatusCarreira(), atorRequest.getAnoInicioAtividade());
@@ -38,13 +38,13 @@ public class AtorService {
 
     }
 
-    private void anoDeInicioDeAtividadeDeveSerMaiorQueDataNascimentoAtor(AtorRequest atorRequest) throws AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoAtorException {
+    private void validarSeAnoDeInicioDeAtividadeMaiorQueDataNascimentoAtor(AtorRequest atorRequest) throws AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoAtorException {
         if (atorRequest.getAnoInicioAtividade() <= atorRequest.getDataNascimento().getYear()) {
             throw new AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoAtorException();
         }
     }
 
-    private void nomeESobreNomeDevemSerInformados(AtorRequest atorRequest) throws NomeESobrenomeDevemSerInformadosException {
+    private void validarSeNomeESobreNomeForamInformados(AtorRequest atorRequest) throws NomeESobrenomeDevemSerInformadosException {
         if (atorRequest.getNome().split(" ").length < 2) {
             throw new NomeESobrenomeDevemSerInformadosException("ator");
         }
