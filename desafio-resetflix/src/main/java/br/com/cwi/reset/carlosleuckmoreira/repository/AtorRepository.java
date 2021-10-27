@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface AtorRepository extends CrudRepository<Ator, Integer> {
     List<Ator> findAll();
-    List<Ator> findAtorById(Integer id);
+    Ator findAtorById(Integer id);
+    List<Ator> findByNomeContainingIgnoringCase(String filtroNome);
+
 }

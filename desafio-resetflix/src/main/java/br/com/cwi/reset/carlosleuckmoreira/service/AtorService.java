@@ -9,8 +9,7 @@ import br.com.cwi.reset.carlosleuckmoreira.model.domain.Ator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,44 +23,31 @@ public class AtorService {
 
         try {
 
-            validarCampoObrigatorio(atorRequest);
-
-
-            if (!atorRequest.getNome().contains(" ")) {
-                throw new NomeESobrenomeDevemSerInformadosException("ator");
-            }
-
-            LocalDate nascimento = atorRequest.getDataNascimento();
-            Integer inicioAtividade = atorRequest.getAnoInicioAtividade();
-
-            SimpleDateFormat newFormat = new SimpleDateFormat("yyyy");
-            String dataInteiroToLocalDate = newFormat.format(inicioAtividade);
-
-
-//            validação não é possível cadastrar atores não nascidos
-            if (nascimento.compareTo(LocalDate.now()) > 0) {
-                throw new DataDeNascimentoInvalidaException();
-            }
-
-            //validação ano de início de atividade não pode ser anterior ao ano de nascimento
-            int compararDatas = dataInteiroToLocalDate.compareTo(String.valueOf(nascimento));
-            if (compararDatas <= 0) {
-                throw new AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoAtorException();
-            }
-
-
+            nomeESobreNomeDevemSerInformados(atorRequest);
+            anoDeInicioDeAtividadeDeveSerMaiorQueDataNascimentoAtor(atorRequest);
             validarSeJaExisteAtorCadastradoComMesmoNome(atorRequest);
 
             Ator ator = new Ator(atorRequest.getNome(), atorRequest.getDataNascimento(), atorRequest.getStatusCarreira(), atorRequest.getAnoInicioAtividade());
             atorRepository.save(ator);
 
-        } catch (CampoObrigatorioNaoInformadoException | NomeESobrenomeDevemSerInformadosException
-                | AtorJaCadastradoException | DataDeNascimentoInvalidaException
-                | AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoAtorException e) {
+        } catch (NomeESobrenomeDevemSerInformadosException
+                | AtorJaCadastradoException | AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoAtorException e) {
             e.printStackTrace();
         }
 
 
+    }
+
+    private void anoDeInicioDeAtividadeDeveSerMaiorQueDataNascimentoAtor(AtorRequest atorRequest) throws AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoAtorException {
+        if (atorRequest.getAnoInicioAtividade() <= atorRequest.getDataNascimento().getYear()) {
+            throw new AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoAtorException();
+        }
+    }
+
+    private void nomeESobreNomeDevemSerInformados(AtorRequest atorRequest) throws NomeESobrenomeDevemSerInformadosException {
+        if (atorRequest.getNome().split(" ").length < 2) {
+            throw new NomeESobrenomeDevemSerInformadosException("ator");
+        }
     }
 
     private void validarSeJaExisteAtorCadastradoComMesmoNome(AtorRequest atorRequest) throws AtorJaCadastradoException {
@@ -75,93 +61,68 @@ public class AtorService {
         }
     }
 
-    private void validarCampoObrigatorio(AtorRequest atorRequest) throws CampoObrigatorioNaoInformadoException {
-        if (atorRequest.getNome() == null) {
-            throw new CampoObrigatorioNaoInformadoException("nome");
-        }
-        if (atorRequest.getDataNascimento() == null) {
-            throw new CampoObrigatorioNaoInformadoException("data de nascimento");
-        }
-        if (atorRequest.getAnoInicioAtividade() == null) {
-            throw new CampoObrigatorioNaoInformadoException("ano de inicio da atividade");
-        }
-        if (atorRequest.getStatusCarreira() == null) {
-            throw new CampoObrigatorioNaoInformadoException("status da carreira");
-        }
-    }
 
     public List<AtorEmAtividade> listarAtoresEmAtividade(String filtroNome) {
-        List<Ator> lista = new ArrayList();
-        lista = atorRepository.findAll();
-        List<Ator> listaDeRetorno = new ArrayList();
-
+        List<Ator> atoresCadastrados = atorRepository.findAll();
+        List<Ator> retorno = new ArrayList<>();
 
         try {
-            if (lista.isEmpty()) {
+            if (atoresCadastrados.isEmpty()) {
                 throw new NaoExisteAtorCadastradoException();
             }
 
-            for (int i = 0; i < lista.size(); i++) {
-                if (lista.get(i).getStatusCarreira() == StatusCarreira.APOSENTADO) {
-                    lista.remove(i);
+            for (int i = 0; i < atoresCadastrados.size(); i++) {
+                if (atoresCadastrados.get(i).getStatusCarreira() != StatusCarreira.EM_ATIVIDADE) {
+                    atoresCadastrados.remove(i);
                 }
             }
 
             if (filtroNome == null) {
-                return lista.stream().map(AtorEmAtividade::new).collect(Collectors.toList());
+                return atoresCadastrados.stream().map(AtorEmAtividade::new).collect(Collectors.toList());
             }
 
-            for (Ator ator : lista) {
+            for (Ator ator : atoresCadastrados) {
                 if (ator.getNome().contains(filtroNome)) {
-                    listaDeRetorno.add(ator);
+                    retorno.add(ator);
                 }
             }
-
-            if (listaDeRetorno.isEmpty()) {
+            if (retorno.isEmpty()) {
                 throw new NaoExisteAtorComOFiltroInformadoException(filtroNome);
             }
-
         } catch (NaoExisteAtorCadastradoException | NaoExisteAtorComOFiltroInformadoException e) {
             e.printStackTrace();
         }
-        return listaDeRetorno.stream().map(AtorEmAtividade::new).collect(Collectors.toList());
+        return retorno.stream().map(AtorEmAtividade::new).collect(Collectors.toList());
 
     }
 
-    public Ator consultarAtor(Integer id) {
-        List<Ator> lista = new ArrayList();
-        lista = atorRepository.findAtorById(id);
+
+    public Ator consultarAtor(@NotNull(message = "Campo obrigatório não informado. Favor informar o campo id.") Integer id) {
+        //TESTAR para ver se @NotNull vai funcionar.
+        //if (id == null) {throw new CampoObrigatorioNaoInformadoException("ID");}
+
+        Ator atorFiltradoPeloId = atorRepository.findAtorById(id);
 
         try {
-            if (id == null) {
-                throw new CampoObrigatorioNaoInformadoException("ID");
+            if (atorFiltradoPeloId == null) {
+                throw new NaoExisteAtorComOIdInformadoException(id);
             }
-
-            for (Ator ator : lista) {
-                if (ator.getId().equals(id)) {
-                    return ator;
-
-                }
-            }
-            throw new NaoExisteAtorComOIdInformadoException(id);
-
-        } catch (CampoObrigatorioNaoInformadoException | NaoExisteAtorComOIdInformadoException e) {
+        } catch (NaoExisteAtorComOIdInformadoException e) {
             e.printStackTrace();
         }
-        return null;
-
+        return atorFiltradoPeloId;
     }
 
     public List<Ator> consultarAtores() {
-        try {
-            if (atorRepository.findAll().isEmpty()) {
-                throw new NaoExisteAtorCadastradoException();
+        List<Ator> listaComTodosAtoresConsultados = atorRepository.findAll();
 
+        try {
+            if (listaComTodosAtoresConsultados.isEmpty()) {
+                throw new NaoExisteAtorCadastradoException();
             }
         } catch (NaoExisteAtorCadastradoException e) {
             e.printStackTrace();
         }
-
-        return atorRepository.findAll();
+        return listaComTodosAtoresConsultados;
     }
 }

@@ -30,7 +30,7 @@ public class AtorController {
     }
 
     @GetMapping(path = "/{id}")
-    public Ator consultarAtor(@PathVariable Integer id) {
+    public Ator consultarAtor(@PathVariable @Valid Integer id) {
         return this.atorService.consultarAtor(id);
     }
 
