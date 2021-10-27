@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface EstudioRepository extends CrudRepository<Estudio, Integer> {
     List<Estudio> findAll();
-    List<Estudio> findEstudioById(Integer id);
+    Estudio findEstudioById(Integer id);
 }

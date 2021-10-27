@@ -1,13 +1,14 @@
 package br.com.cwi.reset.carlosleuckmoreira.service;
 
 import br.com.cwi.reset.carlosleuckmoreira.exception.*;
+import br.com.cwi.reset.carlosleuckmoreira.model.domain.Diretor;
 import br.com.cwi.reset.carlosleuckmoreira.repository.EstudioRepository;
 import br.com.cwi.reset.carlosleuckmoreira.request.EstudioRequest;
 import br.com.cwi.reset.carlosleuckmoreira.model.domain.Estudio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,26 +20,16 @@ public class EstudioService {
     public void cadastrarEstudio(EstudioRequest estudioRequest) {
 
         try {
-            validarCampoObrigatorio(estudioRequest);
-
-
-            if (estudioRequest.getDataCriacao().isAfter(LocalDate.now())) {
-                throw new DataCriacaoEstudioNaoPodeSerMaiorQueDataAtualException();
-            }
-
-            validarEstudioJaCadastradComNomeMesmoNome(estudioRequest);
+            validarEstudioJaCadastradoComNomeMesmoNome(estudioRequest);
 
             final Estudio estudio = new Estudio(estudioRequest.getNome(), estudioRequest.getDescricao(), estudioRequest.getDataCriacao(), estudioRequest.getStatusAtividade());
             estudioRepository.save(estudio);
-
-        } catch (CampoObrigatorioNaoInformadoException |
-                DataCriacaoEstudioNaoPodeSerMaiorQueDataAtualException |
-                EstudioJaCadastradoException e) {
+        } catch (EstudioJaCadastradoException e) {
             e.printStackTrace();
         }
     }
 
-    private void validarEstudioJaCadastradComNomeMesmoNome(EstudioRequest estudioRequest) throws EstudioJaCadastradoException {
+    private void validarEstudioJaCadastradoComNomeMesmoNome(EstudioRequest estudioRequest) throws EstudioJaCadastradoException {
         String nomeEstudio;
         nomeEstudio = estudioRequest.getNome();
         for (int i = 0; i < estudioRepository.findAll().size(); i++) {
@@ -48,73 +39,48 @@ public class EstudioService {
         }
     }
 
-    private void validarCampoObrigatorio(EstudioRequest estudioRequest) throws CampoObrigatorioNaoInformadoException {
-        if (estudioRequest.getNome() == null) {
-            throw new CampoObrigatorioNaoInformadoException("nome");
-        }
-        if (estudioRequest.getDescricao() == null) {
-            throw new CampoObrigatorioNaoInformadoException("descrição");
-        }
-        if (estudioRequest.getDataCriacao() == null) {
-            throw new CampoObrigatorioNaoInformadoException("ano de inicio da atividade");
-        }
-        if (estudioRequest.getStatusAtividade() == null) {
-            throw new CampoObrigatorioNaoInformadoException("status atividade");
-        }
-    }
 
-    public List<Estudio> listarEstudios(String filtroNome) {
-        List<Estudio> lista;
-        List<Estudio> listaDeRetorno = new ArrayList();
-        lista = estudioRepository.findAll();
-
+    public List<Estudio> consultarEstudios(String filtroNome) {
+        List<Estudio> estudiosCadastrados = estudioRepository.findAll();
+        List<Estudio> retorno = new ArrayList();
 
         try {
-            if (lista.isEmpty()) {
+            if (estudiosCadastrados.isEmpty()) {
                 throw new NaoExisteEstudioCadastradoException();
             }
 
             if (filtroNome == null) {
-                return lista;
+                return estudiosCadastrados;
             }
 
-            for (Estudio estudio : lista) {
+            for (Estudio estudio : estudiosCadastrados) {
                 if (estudio.getNome().contains(filtroNome)) {
-                    listaDeRetorno.add(estudio);
+                    retorno.add(estudio);
                 }
             }
 
-            if (listaDeRetorno.isEmpty())
+            if (retorno.isEmpty())
                 throw new NaoExisteEstudioComOFiltroInformadoException(filtroNome);
 
         } catch (NaoExisteEstudioCadastradoException | NaoExisteEstudioComOFiltroInformadoException e) {
             e.printStackTrace();
         }
-        return listaDeRetorno;
+        return retorno;
 
     }
 
 
-    public Estudio consultarEstudio(Integer id) {
-        List<Estudio> lista = new ArrayList();
-        lista = estudioRepository.findAll();
+    public Estudio consultarEstudio(@NotNull(message = "Campo obrigatório não informado. Favor informar o campo id.") Integer id) {
+        Estudio estudioFiltradoPeloId = estudioRepository.findEstudioById(id);
 
         try {
-            if (id == null) {
-                throw new CampoObrigatorioNaoInformadoException("ID");
+            if (estudioFiltradoPeloId == null) {
+                throw new NaoExisteEstudioComOIdInformadoException(id);
             }
-
-            for (Estudio estudio : lista) {
-                if (estudio.getId().equals(id)) {
-                    return estudio;
-                }
-            }
-            throw new NaoExisteEstudioComOIdInformadoException(id);
-
-        } catch (CampoObrigatorioNaoInformadoException | NaoExisteEstudioComOIdInformadoException e) {
+        } catch (NaoExisteEstudioComOIdInformadoException e) {
             e.printStackTrace();
         }
-        return null;
+        return estudioFiltradoPeloId;
     }
 }
 

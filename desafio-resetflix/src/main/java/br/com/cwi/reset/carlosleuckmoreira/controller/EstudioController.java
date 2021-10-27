@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,16 +21,15 @@ public class EstudioController {
     @ResponseStatus(HttpStatus.CREATED)
     public void criarEstudio(@RequestBody EstudioRequest estudioRequest) {
         this.estudioService.cadastrarEstudio(estudioRequest);
-
     }
 
     @GetMapping
     public List<Estudio> consultarEstudios(@RequestParam(value = "nome", required = false) String filtroNome) {
-        return this.estudioService.listarEstudios(filtroNome);
+        return this.estudioService.consultarEstudios(filtroNome);
     }
 
     @GetMapping(value = "/{id}")
-    public Estudio consultarEstudio(@PathVariable Integer id) {
+    public Estudio consultarEstudio(@PathVariable @Valid Integer id) {
         return this.estudioService.consultarEstudio(id);
     }
 }
