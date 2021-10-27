@@ -4,9 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-
-public class NaoExisteAtorCadastradoException extends Exception {
-    public NaoExisteAtorCadastradoException() {
-        super("Nenhum ator cadastrado, favor cadastrar atores.");
+public class DataCriacaoNaoInformadaException extends CampoNaoInformadoException {
+    public DataCriacaoNaoInformadaException() {
+        super("dataCriacao");
     }
 }

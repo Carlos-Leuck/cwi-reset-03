@@ -4,9 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-
-public class GeneroNaoPodeSerInformadoMaisDeUmaVezParaOMesmoFilmeException extends Exception {
-    public GeneroNaoPodeSerInformadoMaisDeUmaVezParaOMesmoFilmeException() {
+public class NaoPodeInformarOMesmoGeneroMaisDeUmaVezParaMesmoFilmeException extends Exception {
+    public NaoPodeInformarOMesmoGeneroMaisDeUmaVezParaMesmoFilmeException() {
         super("Não é permitido informar o mesmo gênero mais de uma vez para o mesmo filme.");
     }
 }
