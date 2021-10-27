@@ -7,17 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4abce513-5187-46c8-acac-1555f3fa4139" name="Changes" comment="Exceptions criadas/renomeadas">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0cf236f4aa74ecbb502ce3613a552b5229984fb7" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/repository/FilmeRepository.java" afterDir="false" />
+    <list default="true" id="4abce513-5187-46c8-acac-1555f3fa4139" name="Changes" comment="PersonagemAtor e Filme: serviços e métodos">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/AtorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/AtorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/DiretorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/DiretorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/FilmeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/FilmeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/request/FilmeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/request/FilmeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/request/PersonagemRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/request/PersonagemRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/AtorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/AtorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/DiretorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/DiretorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/FilmeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/FilmeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/PersonagemAtorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/PersonagemAtorService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +77,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/entities" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -184,7 +182,8 @@
       <workItem from="1635178255476" duration="4864000" />
       <workItem from="1635284504714" duration="6505000" />
       <workItem from="1635296102723" duration="494000" />
-      <workItem from="1635333765890" duration="23301000" />
+      <workItem from="1635333765890" duration="24085000" />
+      <workItem from="1635375128311" duration="959000" />
     </task>
     <task id="LOCAL-00001" summary="Setup inicial do projeto">
       <created>1633960843284</created>
@@ -396,7 +395,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635370533363</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="PersonagemAtor e Filme: serviços e métodos">
+      <created>1635370759104</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1635370759104</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,7 +513,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Aplicacao:imports atualizados, AtorService: criado" />
     <MESSAGE value="AtorService e DiretorService" />
     <MESSAGE value="Exceções criadas" />
     <MESSAGE value="ID gerado automaticamente de forma sequencial" />
@@ -532,7 +537,8 @@
     <MESSAGE value="Diretor: controller, repository, service e request. Validação e refatoração em camadas, Ator: métodos renomeados" />
     <MESSAGE value="Estudio: controller, repository, service e request. Validação e refatoração em camadas" />
     <MESSAGE value="Exceptions criadas/renomeadas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Exceptions criadas/renomeadas" />
+    <MESSAGE value="PersonagemAtor e Filme: serviços e métodos" />
+    <option name="LAST_COMMIT_MESSAGE" value="PersonagemAtor e Filme: serviços e métodos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

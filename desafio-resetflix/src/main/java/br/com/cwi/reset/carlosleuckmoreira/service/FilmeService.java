@@ -162,5 +162,7 @@ public class FilmeService {
         return filmeFiltrado;
     }
 
+    public void removerFilme(Integer id) {
+    }
 }
 

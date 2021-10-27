@@ -122,4 +122,10 @@ public class AtorService {
         }
         return listaComTodosAtoresConsultados;
     }
+
+    public void atualizarAtor(Integer id, AtorRequest atorRequest) {
+    }
+
+    public void removerAtor(Integer id) {
+    }
 }

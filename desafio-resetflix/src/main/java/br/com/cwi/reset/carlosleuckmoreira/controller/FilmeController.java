@@ -32,4 +32,9 @@ public class FilmeController {
         return filmeService.consultarFilmes(nomeFilme, nomeDiretor, nomePersonagem, nomeAtor);
     }
 
+    @DeleteMapping(path = "/{id}")
+    public void removerFilme(@PathVariable @Valid Integer id) {
+        this.filmeService.removerFilme(id);
+    }
+
 }

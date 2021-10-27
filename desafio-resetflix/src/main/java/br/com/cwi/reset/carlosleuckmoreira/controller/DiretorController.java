@@ -21,7 +21,6 @@ public class DiretorController {
     @ResponseStatus(HttpStatus.CREATED)
     public void cadastrarDiretor(@RequestBody @Valid DiretorRequest diretorRequest) {
         this.diretorService.cadastrarDiretor(diretorRequest);
-
     }
 
     @GetMapping
@@ -33,4 +32,15 @@ public class DiretorController {
     public Diretor consultarDiretor(@PathVariable @Valid Integer id) {
         return this.diretorService.consultarDiretor(id);
     }
+
+    @PutMapping(value = "/{id}")
+    public void atualizarDiretor(@PathVariable @Valid Integer id, @Valid DiretorRequest diretorRequest) {
+        this.diretorService.atualizarDiretor(id,diretorRequest);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public void removerDiretores(@PathVariable @Valid Integer id) {
+        this.diretorService.removerDiretores(id);
+    }
+
 }

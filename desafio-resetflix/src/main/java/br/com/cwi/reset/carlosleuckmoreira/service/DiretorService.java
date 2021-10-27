@@ -97,5 +97,11 @@ public class DiretorService {
             }
         }
     }
+
+    public void atualizarDiretor(Integer id, DiretorRequest diretorRequest) {
+    }
+
+    public void removerDiretores(Integer id) {
+    }
 }
 

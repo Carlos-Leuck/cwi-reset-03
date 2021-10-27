@@ -38,6 +38,17 @@ public class AtorController {
     public List<Ator> consultarAtores() {
         return this.atorService.consultarAtores();
     }
+
+    @PutMapping(path = "/{id}")
+    public void atualizarAtor(@PathVariable @Valid Integer id, @Valid AtorRequest atorRequest) {
+        this.atorService.atualizarAtor(id,atorRequest);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public void removerAtor(@PathVariable @Valid Integer id) {
+        this.atorService.removerAtor(id);
+    }
+
 }
 
 
