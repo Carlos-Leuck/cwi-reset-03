@@ -98,9 +98,6 @@ public class AtorService {
 
 
     public Ator consultarAtor(@NotNull(message = "Campo obrigatório não informado. Favor informar o campo id.") Integer id) {
-        //TESTAR para ver se @NotNull vai funcionar.
-        //if (id == null) {throw new CampoObrigatorioNaoInformadoException("ID");}
-
         Ator atorFiltradoPeloId = atorRepository.findAtorById(id);
 
         try {

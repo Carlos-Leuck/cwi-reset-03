@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4abce513-5187-46c8-acac-1555f3fa4139" name="Changes" comment="Exceptions criadas/renomeadas">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/c/0cf236f4aa74ecbb502ce3613a552b5229984fb7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/repository/FilmeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/FilmeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/FilmeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/request/FilmeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/request/FilmeRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/request/PersonagemRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/request/PersonagemRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/AtorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/AtorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/FilmeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/FilmeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/PersonagemAtorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/PersonagemAtorService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="JPA Inspector" value="true" />
+        <entry key="JPA Palette" value="true" />
+        <entry key="JPA Structure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="JPA Inspector" value="false" />
+        <entry key="JPA Palette" value="false" />
+        <entry key="JPA Structure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectId" id="1zMUYJ2ZIZoWJQ2ItP5Sqsdl4wE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/entities" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Reset\cwi-reset-03\desafio-resetflix\src\main\java\br\com\cwi\reset\carlosleuckmoreira\entities" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.com.cwi.reset.carlosleuckmoreira.exception" />
+      <recent name="br.com.cwi.reset.carlosleuckmoreira.services.exceptions" />
+      <recent name="br.com.cwi.reset.carlosleuckmoreira.services" />
+      <recent name="br.com.cwi.reset.carlosleuckmoreira" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Aplicacao">
+    <configuration name="Aplicacao" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="br.com.cwi.reset.carlosleuckmoreira.Aplicacao" />
+      <module name="api-resetflix" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.com.cwi.reset.carlosleuckmoreira.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Aplicacao" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="api-resetflix" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="br.com.cwi.reset.carlosleuckmoreira.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.com.cwi.reset.carlosleuckmoreira.Aplicacao" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.Aplicacao" />
+        <item itemvalue="Application.Aplicacao" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4abce513-5187-46c8-acac-1555f3fa4139" name="Changes" comment="" />
+      <created>1633957497391</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1633957497391</updated>
+      <workItem from="1633957498643" duration="5731000" />
+      <workItem from="1633967585199" duration="1431000" />
+      <workItem from="1633969268924" duration="2319000" />
+      <workItem from="1633987987236" duration="2452000" />
+      <workItem from="1634037260575" duration="157000" />
+      <workItem from="1634058783717" duration="2255000" />
+      <workItem from="1634076987603" duration="6413000" />
+      <workItem from="1634142410562" duration="16786000" />
+      <workItem from="1634162234718" duration="10025000" />
+      <workItem from="1634174885998" duration="1739000" />
+      <workItem from="1634198094476" duration="14402000" />
+      <workItem from="1634216911402" duration="2069000" />
+      <workItem from="1634219016688" duration="8264000" />
+      <workItem from="1634249670410" duration="4024000" />
+      <workItem from="1634387274248" duration="597000" />
+      <workItem from="1634393651589" duration="806000" />
+      <workItem from="1634647882939" duration="709000" />
+      <workItem from="1634661325608" duration="3000" />
+      <workItem from="1634664578393" duration="1384000" />
+      <workItem from="1634666043859" duration="5500000" />
+      <workItem from="1634685140833" duration="3165000" />
+      <workItem from="1634688593320" duration="124000" />
+      <workItem from="1634728379440" duration="249000" />
+      <workItem from="1634729573360" duration="2124000" />
+      <workItem from="1634734396705" duration="5711000" />
+      <workItem from="1634749615678" duration="597000" />
+      <workItem from="1634753176703" duration="13505000" />
+      <workItem from="1634805846794" duration="13938000" />
+      <workItem from="1634833445921" duration="8462000" />
+      <workItem from="1634849659588" duration="314000" />
+      <workItem from="1634852156123" duration="261000" />
+      <workItem from="1634854931888" duration="443000" />
+      <workItem from="1634857757835" duration="760000" />
+      <workItem from="1634858575695" duration="2283000" />
+      <workItem from="1634988923636" duration="1886000" />
+      <workItem from="1634993856853" duration="647000" />
+      <workItem from="1634996165672" duration="474000" />
+      <workItem from="1634997240652" duration="57000" />
+      <workItem from="1634999075554" duration="1254000" />
+      <workItem from="1635162071991" duration="527000" />
+      <workItem from="1635165571873" duration="6635000" />
+      <workItem from="1635176397349" duration="364000" />
+      <workItem from="1635176812676" duration="104000" />
+      <workItem from="1635177696391" duration="524000" />
+      <workItem from="1635178255476" duration="4864000" />
+      <workItem from="1635284504714" duration="6505000" />
+      <workItem from="1635296102723" duration="494000" />
+      <workItem from="1635333765890" duration="23301000" />
+    </task>
+    <task id="LOCAL-00001" summary="Setup inicial do projeto">
+      <created>1633960843284</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1633960843284</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Classes de domínio">
+      <created>1633967974719</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1633967974719</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Entidades e repositório">
+      <created>1634143880878</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1634143880878</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Exceptions criadas">
+      <created>1634147964439</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1634147964439</updated>
+    </task>
+    <task id="LOCAL-00005" summary="DTO's: (AtorEmAtividade, AtorRequest, DiretorRequest) Entidades: Filme, PersonagemAtor">
+      <created>1634152856582</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1634152856582</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Exercicio 2: Resolvido até a parte das datas,necessário corrigir bugs">
+      <created>1634152983755</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1634152983755</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Aplicacao:imports atualizados, AtorService: criado">
+      <created>1634153199673</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1634153199673</updated>
+    </task>
+    <task id="LOCAL-00008" summary="AtorService e DiretorService">
+      <created>1634162410363</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1634162410363</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Exceções criadas">
+      <created>1634162482876</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1634162482876</updated>
+    </task>
+    <task id="LOCAL-00010" summary="ID gerado automaticamente de forma sequencial">
+      <created>1634166744225</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1634166744225</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Ator e Diretor: método toString() adicionado">
+      <created>1634198519631</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1634198519632</updated>
+    </task>
+    <task id="LOCAL-00012" summary="testes na classe da Aplicacao: consultarAtor e consultarAtores">
+      <created>1634199265708</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1634199265708</updated>
+    </task>
+    <task id="LOCAL-00013" summary="AtorService: mensagens de erro validadas">
+      <created>1634213461398</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1634213461398</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Mensagens de erro implementadas de forma parcial (requer mais testes)">
+      <created>1634222235540</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1634222235540</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Classe AtorService método:listarAtoresEmAtividade bug corrigido">
+      <created>1634235811721</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1634235811721</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Reorganização do projeto em novos packages para ficar de acordo com o padrão usado em aula.">
+      <created>1634666126149</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1634666126149</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Setup do projeto com Spring">
+      <created>1634671650479</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1634671650479</updated>
+    </task>
+    <task id="LOCAL-00018" summary="AtorController: GET, POST">
+      <created>1634739508506</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1634739508506</updated>
+    </task>
+    <task id="LOCAL-00019" summary="DiretorController: GET, POST">
+      <created>1634756336549</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1634756336549</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Estudio: controller, service, request e exceptions criadas">
+      <created>1634769608973</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1634769608973</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Filme: controller, service, request, exceptions criadas. Regras de negócio: 4/6 implementadas">
+      <created>1634827963958</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1634827963958</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Extract Method refactoring: verificarCampoObrigatório">
+      <created>1634828511284</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1634828511284</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Refatoração: @Autowired para injetar dependências e extração de código em métodos.">
+      <created>1634835666174</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1634835666174</updated>
+    </task>
+    <task id="LOCAL-00024" summary="AtorController, DiretorController, EstudioController: OK">
+      <created>1634845049695</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1634845049695</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Set up do projeto para desafio 3">
+      <created>1635170251562</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1635170251562</updated>
+    </task>
+    <task id="LOCAL-00026" summary="FakeDatabase foi removida, projeto estruturado em camadas (inicio)">
+      <created>1635286041243</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1635286041243</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Ator: controller, repository, service e request. Validação e refatoração em camadas">
+      <created>1635345761037</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1635345761037</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Diretor: controller, repository, service e request. Validação e refatoração em camadas, Ator: métodos renomeados">
+      <created>1635355236865</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1635355236865</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Estudio: controller, repository, service e request. Validação e refatoração em camadas">
+      <created>1635360137832</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1635360137832</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Exceptions criadas/renomeadas">
+      <created>1635370533363</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1635370533363</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.junit.jupiter:junit-jupiter-params" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:org.slf4j:jul-to-slf4j" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.xml.bind:jakarta.xml.bind-api" />
+    <option featureType="dependencySupport" implementationName="java:org.javassist:javassist" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot-starter-validation" />
+    <option featureType="dependencySupport" implementationName="java:org.hamcrest:hamcrest" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot-starter-data-jpa" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.junit.platform:junit-platform-engine" />
+    <option featureType="dependencySupport" implementationName="java:net.bytebuddy:byte-buddy-agent" />
+    <option featureType="dependencySupport" implementationName="java:com.zaxxer:HikariCP" />
+    <option featureType="dependencySupport" implementationName="java:org.jboss:jandex" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-aspects" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+    <option featureType="dependencySupport" implementationName="java:net.minidev:accessors-smart" />
+    <option featureType="dependencySupport" implementationName="java:com.h2database:h2" />
+    <option featureType="dependencySupport" implementationName="java:org.dom4j:dom4j" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot-starter-test" />
+    <option featureType="dependencySupport" implementationName="java:org.aspectj:aspectjweaver" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-beans" />
+    <option featureType="dependencySupport" implementationName="java:com.jayway.jsonpath:json-path" />
+    <option featureType="dependencySupport" implementationName="java:org.apache.tomcat.embed:tomcat-embed-core" />
+    <option featureType="dependencySupport" implementationName="java:com.fasterxml:classmate" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-test" />
+    <option featureType="dependencySupport" implementationName="java:com.fasterxml.jackson.datatype:jackson-datatype-jsr310" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate.common:hibernate-commons-annotations" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate:hibernate-core" />
+    <option featureType="dependencySupport" implementationName="java:org.glassfish.jaxb:jaxb-runtime" />
+    <option featureType="dependencySupport" implementationName="java:org.skyscreamer:jsonassert" />
+    <option featureType="dependencySupport" implementationName="java:org.apache.tomcat.embed:tomcat-embed-websocket" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-jpa" />
+    <option featureType="dependencySupport" implementationName="java:ch.qos.logback:logback-classic" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
+    <option featureType="dependencySupport" implementationName="java:org.glassfish.jaxb:txw2" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.activation:jakarta.activation-api" />
+    <option featureType="dependencySupport" implementationName="java:org.mockito:mockito-junit-jupiter" />
+    <option featureType="dependencySupport" implementationName="java:org.opentest4j:opentest4j" />
+    <option featureType="dependencySupport" implementationName="java:org.objenesis:objenesis" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-tx" />
+    <option featureType="dependencySupport" implementationName="java:org.junit.jupiter:junit-jupiter" />
+    <option featureType="dependencySupport" implementationName="java:org.junit.jupiter:junit-jupiter-engine" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-jcl" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-web" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot-starter-logging" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot-starter-aop" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot-starter-tomcat" />
+    <option featureType="dependencySupport" implementationName="java:com.fasterxml.jackson.core:jackson-annotations" />
+    <option featureType="dependencySupport" implementationName="java:ch.qos.logback:logback-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot-test" />
+    <option featureType="dependencySupport" implementationName="java:com.fasterxml.jackson.core:jackson-core" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
+    <option featureType="dependencySupport" implementationName="java:com.fasterxml.jackson.core:jackson-databind" />
+    <option featureType="dependencySupport" implementationName="java:org.apache.logging.log4j:log4j-to-slf4j" />
+    <option featureType="dependencySupport" implementationName="java:org.junit.platform:junit-platform-commons" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.annotation:jakarta.annotation-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot-starter" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.jboss.logging:jboss-logging" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-orm" />
+    <option featureType="dependencySupport" implementationName="java:org.slf4j:slf4j-api" />
+    <option featureType="dependencySupport" implementationName="java:org.ow2.asm:asm" />
+    <option featureType="dependencySupport" implementationName="java:org.yaml:snakeyaml" />
+    <option featureType="dependencySupport" implementationName="java:antlr:antlr" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot-autoconfigure" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-context" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot-test-autoconfigure" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot-starter-json" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-expression" />
+    <option featureType="dependencySupport" implementationName="java:com.sun.istack:istack-commons-runtime" />
+    <option featureType="dependencySupport" implementationName="java:com.fasterxml.jackson.datatype:jackson-datatype-jdk8" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-aop" />
+    <option featureType="dependencySupport" implementationName="java:org.junit.jupiter:junit-jupiter-api" />
+    <option featureType="dependencySupport" implementationName="java:net.minidev:json-smart" />
+    <option featureType="dependencySupport" implementationName="java:org.assertj:assertj-core" />
+    <option featureType="dependencySupport" implementationName="java:com.fasterxml.jackson.module:jackson-module-parameter-names" />
+    <option featureType="dependencySupport" implementationName="java:com.vaadin.external.google:android-json" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot-starter-web" />
+    <option featureType="dependencySupport" implementationName="java:org.apiguardian:apiguardian-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-jdbc" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot-starter-jdbc" />
+    <option featureType="dependencySupport" implementationName="java:org.apache.tomcat.embed:tomcat-embed-el" />
+    <option featureType="dependencySupport" implementationName="java:org.mockito:mockito-core" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.transaction:jakarta.transaction-api" />
+    <option featureType="dependencySupport" implementationName="java:com.sun.activation:jakarta.activation" />
+    <option featureType="dependencySupport" implementationName="java:org.apache.logging.log4j:log4j-api" />
+    <option featureType="dependencySupport" implementationName="java:net.bytebuddy:byte-buddy" />
+    <option featureType="dependencySupport" implementationName="java:org.xmlunit:xmlunit-core" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Aplicacao:imports atualizados, AtorService: criado" />
+    <MESSAGE value="AtorService e DiretorService" />
+    <MESSAGE value="Exceções criadas" />
+    <MESSAGE value="ID gerado automaticamente de forma sequencial" />
+    <MESSAGE value="Ator e Diretor: método toString() adicionado" />
+    <MESSAGE value="&quot;testes&quot; na classe da Aplicacao: consultarAtor e consultarAtores" />
+    <MESSAGE value="testes na classe da Aplicacao: consultarAtor e consultarAtores" />
+    <MESSAGE value="AtorService: mensagens de erro validadas" />
+    <MESSAGE value="Mensagens de erro implementadas de forma parcial (requer mais testes)" />
+    <MESSAGE value="Classe AtorService método:listarAtoresEmAtividade bug corrigido" />
+    <MESSAGE value="Reorganização do projeto em novos packages para ficar de acordo com o padrão usado em aula." />
+    <MESSAGE value="Setup do projeto com Spring" />
+    <MESSAGE value="AtorController: GET, POST" />
+    <MESSAGE value="DiretorController: GET, POST" />
+    <MESSAGE value="Estudio: controller, service, request e exceptions criadas" />
+    <MESSAGE value="Filme: controller, service, request, exceptions criadas. Regras de negócio: 4/6 implementadas" />
+    <MESSAGE value="Extract Method refactoring: verificarCampoObrigatório" />
+    <MESSAGE value="Refatoração: @Autowired para injetar dependências e extração de código em métodos." />
+    <MESSAGE value="AtorController, DiretorController, EstudioController: OK" />
+    <MESSAGE value="Set up do projeto para desafio 3" />
+    <MESSAGE value="FakeDatabase foi removida, projeto estruturado em camadas (inicio)" />
+    <MESSAGE value="Ator: controller, repository, service e request. Validação e refatoração em camadas" />
+    <MESSAGE value="Diretor: controller, repository, service e request. Validação e refatoração em camadas, Ator: métodos renomeados" />
+    <MESSAGE value="Estudio: controller, repository, service e request. Validação e refatoração em camadas" />
+    <MESSAGE value="Exceptions criadas/renomeadas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Exceptions criadas/renomeadas" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="6" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
