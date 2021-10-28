@@ -163,6 +163,16 @@ public class FilmeService {
     }
 
     public void removerFilme(Integer id) {
+        try {
+            Filme filmeQueDeveSerRemovido = filmeRepository.findFilmeById(id);
+            if (filmeQueDeveSerRemovido == null) {
+                throw new NaoExisteFilmeComOIdInformadoException(id);
+            }
+            filmeRepository.delete(filmeQueDeveSerRemovido);
+        } catch (NaoExisteFilmeComOIdInformadoException e) {
+            e.printStackTrace();
+        }
     }
 }
+
 
