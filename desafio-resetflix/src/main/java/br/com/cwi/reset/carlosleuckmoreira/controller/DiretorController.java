@@ -34,8 +34,8 @@ public class DiretorController {
     }
 
     @PutMapping(value = "/{id}")
-    public void atualizarDiretor(@PathVariable Integer id, @Valid DiretorRequest diretorRequest) {
-        this.diretorService.atualizarDiretor(id,diretorRequest);
+    public void atualizarDiretor(@PathVariable Integer id, @RequestBody @Valid DiretorRequest diretorRequest) {
+        this.diretorService.atualizarDiretor(id, diretorRequest);
     }
 
     @DeleteMapping(path = "/{id}")

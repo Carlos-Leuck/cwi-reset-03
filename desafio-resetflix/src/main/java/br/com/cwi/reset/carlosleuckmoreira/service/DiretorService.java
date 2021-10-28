@@ -1,7 +1,9 @@
 package br.com.cwi.reset.carlosleuckmoreira.service;
 
 import br.com.cwi.reset.carlosleuckmoreira.exception.*;
+import br.com.cwi.reset.carlosleuckmoreira.model.domain.Filme;
 import br.com.cwi.reset.carlosleuckmoreira.repository.DiretorRepository;
+import br.com.cwi.reset.carlosleuckmoreira.repository.FilmeRepository;
 import br.com.cwi.reset.carlosleuckmoreira.request.DiretorRequest;
 import br.com.cwi.reset.carlosleuckmoreira.model.domain.Diretor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ public class DiretorService {
 
     @Autowired
     private DiretorRepository diretorRepository;
+    @Autowired
+    private FilmeRepository filmeRepository;
+
 
     public void cadastrarDiretor(DiretorRequest diretorRequest) {
 
@@ -98,9 +103,39 @@ public class DiretorService {
     }
 
     public void atualizarDiretor(Integer id, DiretorRequest diretorRequest) {
+        try {
+            validarSeJaExisteDiretorCadastradoComMesmoNome(diretorRequest);
+            Diretor diretorAtualizado = new Diretor(diretorRequest.getNome(), diretorRequest.getDataNascimento(),
+                    diretorRequest.getAnoInicioAtividade());
+            diretorAtualizado.setId(consultarDiretor(id).getId());
+            diretorRepository.save(diretorAtualizado);
+        } catch (DiretorJaCadastradoException e) {
+            e.printStackTrace();
+        }
     }
 
     public void removerDiretores(Integer id) {
+        Diretor diretorQueDeveSerRemovido = consultarDiretor(id);
+
+        if (validarSeDiretorPossuiFilmes(diretorQueDeveSerRemovido)) {
+            try {
+                throw new DiretorNaoPodeEstarVinculadoMaisDeUmFilmeException();
+            } catch (DiretorNaoPodeEstarVinculadoMaisDeUmFilmeException e) {
+                e.printStackTrace();
+            }
+        }
+        diretorRepository.delete(diretorQueDeveSerRemovido);
+    }
+
+    private boolean validarSeDiretorPossuiFilmes(Diretor diretor) {
+        for (Filme d : filmeRepository.findAll()) {
+            if (d.getDiretor().getNome().equalsIgnoreCase(diretor.getNome())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
+
+
 
