@@ -15,10 +15,10 @@ public class AtorController {
     private AtorService atorService;
 
     @PostMapping
-    public ResponseEntity<Ator> cadastrarAtor(@RequestBody Ator Ator) {
+    public ResponseEntity<Ator> cadastrarAtor(@RequestBody Ator ator) {
         try {
-            Ator AtorSalvo = atorService.salvar(Ator);
-            return ResponseEntity.ok(AtorSalvo);
+            Ator atorSalvo = atorService.salvar(ator);
+            return ResponseEntity.ok(atorSalvo);
         } catch (AtorJaExistenteException ex) {
             return ResponseEntity.badRequest().build();
         }
@@ -51,9 +51,9 @@ public class AtorController {
     }
 
     @PutMapping
-    public ResponseEntity<Ator> atualizarAtor(@RequestBody Ator Ator) {
+    public ResponseEntity<Ator> atualizarAtor(@RequestBody Ator ator) {
         try {
-            return ResponseEntity.ok(atorService.atualizar(Ator));
+            return ResponseEntity.ok(atorService.atualizar(ator));
         } catch (AtorNaoExistenteException e) {
             return ResponseEntity.badRequest().build();
         }

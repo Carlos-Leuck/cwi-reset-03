@@ -33,7 +33,7 @@ public class FilmeController {
     }
 
     @DeleteMapping(path = "/{id}")
-    public void removerFilme(@PathVariable @Valid Integer id) {
+    public void removerFilme(@PathVariable Integer id) {
         this.filmeService.removerFilme(id);
     }
 

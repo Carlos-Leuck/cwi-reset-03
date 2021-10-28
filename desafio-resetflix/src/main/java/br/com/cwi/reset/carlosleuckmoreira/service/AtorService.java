@@ -9,7 +9,6 @@ import br.com.cwi.reset.carlosleuckmoreira.model.domain.Ator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,8 +33,6 @@ public class AtorService {
                 | AtorJaCadastradoException | AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoAtorException e) {
             e.printStackTrace();
         }
-
-
     }
 
     private void validarSeAnoDeInicioDeAtividadeMaiorQueDataNascimentoAtor(AtorRequest atorRequest) throws AnoDeInicioDeAtividadeDeveSerMaiorQueNascimentoDoAtorException {
@@ -97,7 +94,7 @@ public class AtorService {
     }
 
 
-    public Ator consultarAtor(@NotNull(message = "Campo obrigatório não informado. Favor informar o campo id.") Integer id) {
+    public Ator consultarAtor(Integer id) {
         Ator atorFiltradoPeloId = atorRepository.findAtorById(id);
 
         try {
@@ -124,6 +121,13 @@ public class AtorService {
     }
 
     public void atualizarAtor(Integer id, AtorRequest atorRequest) {
+
+        try {
+            validarSeJaExisteAtorCadastradoComMesmoNome(atorRequest);
+            atorRepository.save(consultarAtor(id));
+        } catch (AtorJaCadastradoException e) {
+            e.printStackTrace();
+        }
     }
 
     public void removerAtor(Integer id) {

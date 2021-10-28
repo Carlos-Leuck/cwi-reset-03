@@ -29,17 +29,17 @@ public class DiretorController {
     }
 
     @GetMapping(value = "/{id}")
-    public Diretor consultarDiretor(@PathVariable @Valid Integer id) {
+    public Diretor consultarDiretor(@PathVariable Integer id) {
         return this.diretorService.consultarDiretor(id);
     }
 
     @PutMapping(value = "/{id}")
-    public void atualizarDiretor(@PathVariable @Valid Integer id, @Valid DiretorRequest diretorRequest) {
+    public void atualizarDiretor(@PathVariable Integer id, @Valid DiretorRequest diretorRequest) {
         this.diretorService.atualizarDiretor(id,diretorRequest);
     }
 
     @DeleteMapping(path = "/{id}")
-    public void removerDiretores(@PathVariable @Valid Integer id) {
+    public void removerDiretores(@PathVariable Integer id) {
         this.diretorService.removerDiretores(id);
     }
 

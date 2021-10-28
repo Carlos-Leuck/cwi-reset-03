@@ -7,7 +7,6 @@ import br.com.cwi.reset.carlosleuckmoreira.model.domain.Diretor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,7 +61,7 @@ public class DiretorService {
     }
 
 
-    public Diretor consultarDiretor(@NotNull(message = "Campo obrigatório não informado. Favor informar o campo id.") Integer id) {
+    public Diretor consultarDiretor(Integer id) {
 
         Diretor diretorFiltradoPeloId = diretorRepository.findDiretorById(id);
         try {

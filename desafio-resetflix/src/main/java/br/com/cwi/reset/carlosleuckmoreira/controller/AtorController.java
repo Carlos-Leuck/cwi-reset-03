@@ -30,7 +30,7 @@ public class AtorController {
     }
 
     @GetMapping(path = "/{id}")
-    public Ator consultarAtor(@PathVariable @Valid Integer id) {
+    public Ator consultarAtor(@PathVariable Integer id) {
         return this.atorService.consultarAtor(id);
     }
 
@@ -40,12 +40,12 @@ public class AtorController {
     }
 
     @PutMapping(path = "/{id}")
-    public void atualizarAtor(@PathVariable @Valid Integer id, @Valid AtorRequest atorRequest) {
-        this.atorService.atualizarAtor(id,atorRequest);
+    public void atualizarAtor(@PathVariable Integer id, @Valid AtorRequest atorRequest) {
+        this.atorService.atualizarAtor(id, atorRequest);
     }
 
     @DeleteMapping(path = "/{id}")
-    public void removerAtor(@PathVariable @Valid Integer id) {
+    public void removerAtor(@PathVariable Integer id) {
         this.atorService.removerAtor(id);
     }
 

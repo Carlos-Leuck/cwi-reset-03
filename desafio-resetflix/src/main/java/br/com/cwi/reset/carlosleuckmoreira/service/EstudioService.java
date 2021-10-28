@@ -1,14 +1,12 @@
 package br.com.cwi.reset.carlosleuckmoreira.service;
 
 import br.com.cwi.reset.carlosleuckmoreira.exception.*;
-import br.com.cwi.reset.carlosleuckmoreira.model.domain.Diretor;
 import br.com.cwi.reset.carlosleuckmoreira.repository.EstudioRepository;
 import br.com.cwi.reset.carlosleuckmoreira.request.EstudioRequest;
 import br.com.cwi.reset.carlosleuckmoreira.model.domain.Estudio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +68,7 @@ public class EstudioService {
     }
 
 
-    public Estudio consultarEstudio(@NotNull(message = "Campo obrigatório não informado. Favor informar o campo id.") Integer id) {
+    public Estudio consultarEstudio(Integer id) {
         Estudio estudioFiltradoPeloId = estudioRepository.findEstudioById(id);
 
         try {

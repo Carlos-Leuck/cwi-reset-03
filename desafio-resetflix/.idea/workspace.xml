@@ -7,14 +7,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4abce513-5187-46c8-acac-1555f3fa4139" name="Changes" comment="PersonagemAtor e Filme: serviços e métodos">
+    <list default="true" id="4abce513-5187-46c8-acac-1555f3fa4139" name="Changes" comment="desafio 3: controladores implementados">
+      <change beforePath="$PROJECT_DIR$/../Aula-4/projeto1/src/main/java/br/com/cwi/reset/projeto1/controller/AtorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Aula-4/projeto1/src/main/java/br/com/cwi/reset/projeto1/controller/AtorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/AtorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/AtorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/DiretorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/DiretorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/EstudioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/EstudioController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/FilmeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/FilmeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/AtorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/AtorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/DiretorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/DiretorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/FilmeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/FilmeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/EstudioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/EstudioService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +185,8 @@
       <workItem from="1635284504714" duration="6505000" />
       <workItem from="1635296102723" duration="494000" />
       <workItem from="1635333765890" duration="24085000" />
-      <workItem from="1635375128311" duration="959000" />
+      <workItem from="1635375128311" duration="2980000" />
+      <workItem from="1635428741635" duration="566000" />
     </task>
     <task id="LOCAL-00001" summary="Setup inicial do projeto">
       <created>1633960843284</created>
@@ -402,7 +405,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635370759104</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="desafio 3: controladores implementados">
+      <created>1635376226938</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1635376226938</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +523,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="AtorService e DiretorService" />
     <MESSAGE value="Exceções criadas" />
     <MESSAGE value="ID gerado automaticamente de forma sequencial" />
     <MESSAGE value="Ator e Diretor: método toString() adicionado" />
@@ -538,7 +547,8 @@
     <MESSAGE value="Estudio: controller, repository, service e request. Validação e refatoração em camadas" />
     <MESSAGE value="Exceptions criadas/renomeadas" />
     <MESSAGE value="PersonagemAtor e Filme: serviços e métodos" />
-    <option name="LAST_COMMIT_MESSAGE" value="PersonagemAtor e Filme: serviços e métodos" />
+    <MESSAGE value="desafio 3: controladores implementados" />
+    <option name="LAST_COMMIT_MESSAGE" value="desafio 3: controladores implementados" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
