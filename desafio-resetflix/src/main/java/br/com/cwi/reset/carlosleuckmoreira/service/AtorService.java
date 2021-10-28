@@ -2,7 +2,9 @@ package br.com.cwi.reset.carlosleuckmoreira.service;
 
 import br.com.cwi.reset.carlosleuckmoreira.model.StatusCarreira;
 import br.com.cwi.reset.carlosleuckmoreira.exception.*;
+import br.com.cwi.reset.carlosleuckmoreira.model.domain.PersonagemAtor;
 import br.com.cwi.reset.carlosleuckmoreira.repository.AtorRepository;
+import br.com.cwi.reset.carlosleuckmoreira.repository.PersonagemAtorRepository;
 import br.com.cwi.reset.carlosleuckmoreira.response.AtorEmAtividade;
 import br.com.cwi.reset.carlosleuckmoreira.request.AtorRequest;
 import br.com.cwi.reset.carlosleuckmoreira.model.domain.Ator;
@@ -17,6 +19,8 @@ import java.util.stream.Collectors;
 public class AtorService {
     @Autowired
     private AtorRepository atorRepository;
+    @Autowired
+    private PersonagemAtorRepository personagemAtorRepository;
 
     public void criarAtor(AtorRequest atorRequest) {
 
@@ -124,12 +128,36 @@ public class AtorService {
 
         try {
             validarSeJaExisteAtorCadastradoComMesmoNome(atorRequest);
-            atorRepository.save(consultarAtor(id));
+            Ator atorAtualizado = new Ator(atorRequest.getNome(), atorRequest.getDataNascimento(),
+                    atorRequest.getStatusCarreira(), atorRequest.getAnoInicioAtividade());
+            atorAtualizado.setId(consultarAtor(id).getId());
+            atorRepository.save(atorAtualizado);
+
         } catch (AtorJaCadastradoException e) {
             e.printStackTrace();
         }
     }
 
     public void removerAtor(Integer id) {
+        Ator atorQueDeveSerRemovido = consultarAtor(id);
+
+        if (validarSeAtorEstaVinculadoMaisDeUmPersonagem(atorQueDeveSerRemovido)) {
+            try {
+                throw new AtorNaoPodeEstarVinculadoMaisDeUmPersonagemException();
+            } catch (AtorNaoPodeEstarVinculadoMaisDeUmPersonagemException e) {
+                e.printStackTrace();
+            }
+        }
+        atorRepository.delete(atorQueDeveSerRemovido);
     }
+
+    private boolean validarSeAtorEstaVinculadoMaisDeUmPersonagem(Ator ator) {
+        for (PersonagemAtor p : personagemAtorRepository.findAll()) {
+            if (p.getAtor().getNome().equalsIgnoreCase(ator.getNome())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

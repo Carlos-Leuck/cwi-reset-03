@@ -40,7 +40,7 @@ public class AtorController {
     }
 
     @PutMapping(path = "/{id}")
-    public void atualizarAtor(@PathVariable Integer id, @Valid AtorRequest atorRequest) {
+    public void atualizarAtor(@PathVariable Integer id, @RequestBody @Valid AtorRequest atorRequest) {
         this.atorService.atualizarAtor(id, atorRequest);
     }
 
