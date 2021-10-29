@@ -1,5 +1,6 @@
 package br.com.cwi.reset.carlosleuckmoreira.controller;
 
+import br.com.cwi.reset.carlosleuckmoreira.exception.NaoExisteAtorCadastradoException;
 import br.com.cwi.reset.carlosleuckmoreira.model.domain.Ator;
 import br.com.cwi.reset.carlosleuckmoreira.request.AtorRequest;
 import br.com.cwi.reset.carlosleuckmoreira.response.AtorEmAtividade;
@@ -24,9 +25,16 @@ public class AtorController {
         this.atorService.criarAtor(atorRequest);
     }
 
-    @GetMapping(path = "/em_atividade")
-    public List<AtorEmAtividade> listarAtoresEmAtividade(@RequestParam(value = "nome", required = false) String filtroNome) {
-        return this.atorService.listarAtoresEmAtividade(filtroNome);
+    @GetMapping(value = "em_atividade", params = {"filtroNome"})
+    @ResponseStatus(HttpStatus.OK)
+    public List<AtorEmAtividade> listarAtoresEmAtividade(@RequestParam String filtroNome) throws NaoExisteAtorCadastradoException {
+        return atorService.listarAtoresEmAtividade(filtroNome);
+    }
+
+    @GetMapping(value = "em_atividade")
+    @ResponseStatus(HttpStatus.OK)
+    public List<AtorEmAtividade> listarAtoresEmAtividade() throws NaoExisteAtorCadastradoException {
+        return atorService.listarAtoresEmAtividade();
     }
 
     @GetMapping(path = "/{id}")

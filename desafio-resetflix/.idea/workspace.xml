@@ -7,16 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4abce513-5187-46c8-acac-1555f3fa4139" name="Changes" comment="desafio 3: controladores implementados">
-      <change beforePath="$PROJECT_DIR$/../Aula-4/projeto1/src/main/java/br/com/cwi/reset/projeto1/controller/AtorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Aula-4/projeto1/src/main/java/br/com/cwi/reset/projeto1/controller/AtorController.java" afterDir="false" />
+    <list default="true" id="4abce513-5187-46c8-acac-1555f3fa4139" name="Changes" comment="Desafio 3 concluido: FilmeService, NaoExisteFilmeComOIdInformadoException">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/AtorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/AtorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/DiretorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/DiretorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/EstudioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/EstudioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/FilmeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/controller/FilmeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/AtorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/AtorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/DiretorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/DiretorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/EstudioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/cwi/reset/carlosleuckmoreira/service/EstudioService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +180,16 @@
       <workItem from="1635296102723" duration="494000" />
       <workItem from="1635333765890" duration="24085000" />
       <workItem from="1635375128311" duration="2980000" />
-      <workItem from="1635428741635" duration="566000" />
+      <workItem from="1635428741635" duration="8234000" />
+      <workItem from="1635439302594" duration="58000" />
+      <workItem from="1635458556803" duration="498000" />
+      <workItem from="1635459384758" duration="162000" />
+      <workItem from="1635459594043" duration="181000" />
+      <workItem from="1635459977460" duration="3841000" />
+      <workItem from="1635465133647" duration="952000" />
+      <workItem from="1635466128634" duration="26000" />
+      <workItem from="1635466227383" duration="577000" />
+      <workItem from="1635466910655" duration="172000" />
     </task>
     <task id="LOCAL-00001" summary="Setup inicial do projeto">
       <created>1633960843284</created>
@@ -412,7 +415,35 @@
       <option name="project" value="LOCAL" />
       <updated>1635376226938</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Removida @Valid dos parâmetros com @PathVariable">
+      <created>1635429417685</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1635429417685</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Métodos implementados: atualizarAtor, removerAtor e validarSeAtorEstaVinculadoMaisDeUmPersonagem">
+      <created>1635432514333</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1635432514333</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Métodos implementados: atualizarDiretor, removerDiretores e validarSeDiretorPossuiFilmes">
+      <created>1635435380408</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1635435380408</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Desafio 3 concluido: FilmeService, NaoExisteFilmeComOIdInformadoException">
+      <created>1635439076756</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1635439076756</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -523,10 +554,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Exceções criadas" />
-    <MESSAGE value="ID gerado automaticamente de forma sequencial" />
-    <MESSAGE value="Ator e Diretor: método toString() adicionado" />
-    <MESSAGE value="&quot;testes&quot; na classe da Aplicacao: consultarAtor e consultarAtores" />
     <MESSAGE value="testes na classe da Aplicacao: consultarAtor e consultarAtores" />
     <MESSAGE value="AtorService: mensagens de erro validadas" />
     <MESSAGE value="Mensagens de erro implementadas de forma parcial (requer mais testes)" />
@@ -548,7 +575,11 @@
     <MESSAGE value="Exceptions criadas/renomeadas" />
     <MESSAGE value="PersonagemAtor e Filme: serviços e métodos" />
     <MESSAGE value="desafio 3: controladores implementados" />
-    <option name="LAST_COMMIT_MESSAGE" value="desafio 3: controladores implementados" />
+    <MESSAGE value="Removida @Valid dos parâmetros com @PathVariable" />
+    <MESSAGE value="Métodos implementados: atualizarAtor, removerAtor e validarSeAtorEstaVinculadoMaisDeUmPersonagem" />
+    <MESSAGE value="Métodos implementados: atualizarDiretor, removerDiretores e validarSeDiretorPossuiFilmes" />
+    <MESSAGE value="Desafio 3 concluido: FilmeService, NaoExisteFilmeComOIdInformadoException" />
+    <option name="LAST_COMMIT_MESSAGE" value="Desafio 3 concluido: FilmeService, NaoExisteFilmeComOIdInformadoException" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -556,6 +587,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="6" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="br.com.cwi.reset.carlosleuckmoreira.exception.AtorJaCadastradoException" package="br.com.cwi.reset.carlosleuckmoreira.exception" />
+          <option name="timeStamp" value="7" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

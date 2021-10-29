@@ -63,40 +63,26 @@ public class AtorService {
     }
 
 
-    public List<AtorEmAtividade> listarAtoresEmAtividade(String filtroNome) {
-        List<Ator> atoresCadastrados = atorRepository.findAll();
-        List<Ator> retorno = new ArrayList<>();
+    public List<AtorEmAtividade> listarAtoresEmAtividade(String filtroNome) throws NaoExisteAtorCadastradoException {
+        List<AtorEmAtividade> listaFiltrada = listarAtoresEmAtividade().stream()
+                .filter(ator -> ator.getNome().toUpperCase().contains(filtroNome.toUpperCase()))
+                .collect(Collectors.toList());
 
-        try {
-            if (atoresCadastrados.isEmpty()) {
-                throw new NaoExisteAtorCadastradoException();
-            }
-
-            for (int i = 0; i < atoresCadastrados.size(); i++) {
-                if (atoresCadastrados.get(i).getStatusCarreira() != StatusCarreira.EM_ATIVIDADE) {
-                    atoresCadastrados.remove(i);
-                }
-            }
-
-            if (filtroNome == null) {
-                return atoresCadastrados.stream().map(AtorEmAtividade::new).collect(Collectors.toList());
-            }
-
-            for (Ator ator : atoresCadastrados) {
-                if (ator.getNome().contains(filtroNome)) {
-                    retorno.add(ator);
-                }
-            }
-            if (retorno.isEmpty()) {
-                throw new NaoExisteAtorComOFiltroInformadoException(filtroNome);
-            }
-        } catch (NaoExisteAtorCadastradoException | NaoExisteAtorComOFiltroInformadoException e) {
-            e.printStackTrace();
+        if (listaFiltrada.isEmpty()) {
+            throw new NaoExisteAtorCadastradoException(
+                    );
         }
-        return retorno.stream().map(AtorEmAtividade::new).collect(Collectors.toList());
 
+        return listaFiltrada;
     }
-
+    public List<AtorEmAtividade> listarAtoresEmAtividade() throws NaoExisteAtorCadastradoException {
+        if (atorRepository.findAll().isEmpty()) {
+            throw new NaoExisteAtorCadastradoException();
+        }
+        return atorRepository.findAll().stream()
+                .filter(ator -> ator.getStatusCarreira().toString().equals("EM_ATIVIDADE"))
+                .map(ator -> new AtorEmAtividade(ator)).collect(Collectors.toList());
+    }
 
     public Ator consultarAtor(Integer id) {
         Ator atorFiltradoPeloId = atorRepository.findAtorById(id);
